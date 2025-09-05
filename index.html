@@ -1,0 +1,1418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INVASC - Advanced Medical Treatments | Professional Consultation</title>
+    <meta name="description" content="INVASC offers advanced non-invasive medical treatments with proven results. Professional consultation with certified medical specialists.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            opacity: 0;
+            transition: opacity 0.5s ease-in;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #d4af37, #f4d03f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #d4af37;
+        }
+        
+        .cta-button {
+            background: linear-gradient(45deg, #25D366, #128C7E);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            animation: pulse 2s infinite;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        /* Urgent Notice */
+        .urgent-notice {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            text-align: center;
+            padding: 10px;
+            font-weight: bold;
+            animation: pulse 2s infinite;
+            margin-top: 70px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 100px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="white" opacity="0.1"><polygon points="0,0 1000,0 1000,100 0,50"/></svg>');
+            background-size: cover;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .discount-banner {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem auto;
+            max-width: 600px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        /* Success Cases Hero Section */
+        .success-hero {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .success-hero h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .success-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* Success Cases Grid */
+        .success-cases {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        
+        .cases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .case-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .case-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(45deg, #d4af37, #f4d03f);
+        }
+        
+        .case-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+        }
+        
+        .case-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .case-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #d4af37;
+        }
+        
+        .case-info h4 {
+            font-size: 1.3rem;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+        
+        .case-results {
+            background: linear-gradient(45deg, #11998e, #38ef7d);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        
+        .case-content {
+            margin: 1.5rem 0;
+            line-height: 1.8;
+            color: #555;
+        }
+        
+        .case-metrics {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .metric {
+            text-align: center;
+            padding: 1rem;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 10px;
+        }
+        
+        .metric-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: block;
+        }
+        
+        .metric-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .verified-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #27ae60;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            z-index: 10;
+        }
+        
+        /* Before/After Gallery */
+        .before-after-gallery {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-header h2 {
+            font-size: 3rem;
+            color: white;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .section-header p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .gallery-item {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            position: relative;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+        
+        .gallery-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .gallery-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .gallery-info h4 {
+            color: #333;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .gallery-info p {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        
+        .result-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: linear-gradient(45deg, #11998e, #38ef7d);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        /* Doctor Section */
+        .doctor-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+        }
+        
+        .doctor-card {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 3rem;
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            align-items: center;
+        }
+        
+        .doctor-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+        
+        .doctor-info h2 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+        
+        .credentials {
+            margin: 1.5rem 0;
+        }
+        
+        .credentials p {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            color: #555;
+        }
+        
+        .credentials i {
+            color: #d4af37;
+        }
+        
+        /* Statistics Section */
+        .stats-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #d4af37;
+            display: block;
+        }
+        
+        .stat-label {
+            color: #666;
+            margin-top: 0.5rem;
+        }
+        
+        /* Customer Reviews */
+        .reviews-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+        }
+        
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .review-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            position: relative;
+            transition: transform 0.3s;
+        }
+        
+        .review-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .review-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .customer-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .stars {
+            color: #ffd700;
+            font-size: 1.2rem;
+        }
+        
+        /* Products Section */
+        .products-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .product-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+        
+        .price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #d4af37;
+            margin: 1rem 0;
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #2c1810, #4a2c1a);
+            color: white;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .contact-item {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            transition: transform 0.3s;
+        }
+        
+        .contact-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .contact-item i {
+            font-size: 3rem;
+            color: #d4af37;
+            margin-bottom: 1rem;
+        }
+        
+        /* Footer */
+        .footer {
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+        
+        /* WhatsApp Float Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            animation: pulse 2s infinite;
+            text-decoration: none;
+        }
+        
+        /* Exit Popup Styles */
+        .exit-popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 10000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease-out;
+        }
+        
+        .exit-popup {
+            background: linear-gradient(135deg, #d4af37, #b8941f);
+            border-radius: 20px;
+            padding: 3rem;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            color: white;
+            position: relative;
+            animation: popupSlideIn 0.5s ease-out;
+        }
+        
+        .exit-popup h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .exit-popup p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        
+        .popup-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .popup-btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .popup-btn-primary {
+            background: #25D366;
+            color: white;
+        }
+        
+        .popup-btn-secondary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .popup-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .popup-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes popupSlideIn {
+            from {
+                transform: scale(0.7) translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1) translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        /* Loading Animation */
+        .loading {
+            opacity: 0;
+            animation: slideInUp 0.8s ease-out forwards;
+        }
+        
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .doctor-card {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .case-metrics {
+                grid-template-columns: 1fr;
+            }
+            
+            .popup-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Exit Popup -->
+    <div class="exit-popup-overlay" id="exitPopup">
+        <div class="exit-popup">
+            <button class="popup-close" onclick="closeExitPopup()">&times;</button>
+            <h3>🎯 Wait! Special Offer!</h3>
+            <p>Don't miss out on our <strong>LIMITED TIME</strong> professional consultation offer. Get expert medical advice and proven treatment solutions.</p>
+            <div class="popup-buttons">
+                <a href="#" class="popup-btn popup-btn-primary" onclick="openWhatsApp()">
+                    <i class="fab fa-whatsapp"></i> Get Special Offer
+                </a>
+                <button class="popup-btn popup-btn-secondary" onclick="closeExitPopup()">
+                    Maybe Later
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <a href="#" class="logo">INVASC</a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#results">Results</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <a href="#" class="cta-button" onclick="openWhatsApp()">
+                <i class="fab fa-whatsapp"></i> Professional Consultation
+            </a>
+        </nav>
+    </header>
+
+    <!-- Urgent Notice -->
+    <div class="urgent-notice">
+        🚨 LIMITED AVAILABILITY: Professional consultations filling up fast - Secure your spot today!
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Advanced Medical Enhancement</h1>
+                <p>Professional, non-invasive treatments with proven results. Certified medical specialists providing personalized care.</p>
+                
+                <div class="discount-banner">
+                    <h3>🎯 Professional Consultation Available</h3>
+                    <p>Expert medical guidance • Personalized treatment plans • Proven methodologies</p>
+                    <a href="#" class="cta-button" onclick="openWhatsApp()" style="margin-top: 1rem;">
+                        <i class="fab fa-whatsapp"></i> Book Consultation
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Cases Hero -->
+    <section class="success-hero">
+        <div class="container">
+            <h2>Real Success Stories</h2>
+            <p>Verified patient results from our certified medical specialists. Each case represents a personalized treatment approach with documented outcomes.</p>
+        </div>
+    </section>
+
+    <!-- Success Cases -->
+    <section class="success-cases">
+        <div class="container">
+            <div class="cases-grid">
+                <!-- Case 1 -->
+                <div class="case-card loading">
+                    <div class="verified-badge">✓ Verified Patient</div>
+                    <div class="case-header">
+                        <img src="https://res.cloudinary.com/dklyp8vud/image/upload/v1757070852/wechat_2025-09-05_191330_928_cgbesm.png" alt="Derek Carlu" class="case-image">
+                        <div class="case-info">
+                            <h4>Derek Carlu</h4>
+                            <div class="case-results">6" → 8.5" Growth</div>
+                        </div>
+                    </div>
+                    <div class="case-content">
+                        "The treatment exceeded all my expectations. Professional approach with remarkable results. The 2.5-inch improvement has completely transformed my confidence and relationship satisfaction."
+                    </div>
+                    <div class="case-metrics">
+                        <div class="metric">
+                            <span class="metric-value">2.5"</span>
+                            <span class="metric-label">Growth Achieved</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">12 weeks</span>
+                            <span class="metric-label">Treatment Time</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case 2 -->
+                <div class="case-card loading">
+                    <div class="verified-badge">✓ Verified Patient</div>
+                    <div class="case-header">
+                        <img src="https://res.cloudinary.com/dklyp8vud/image/upload/v1757070847/wechat_2025-09-05_191310_025_juzaqe.png" alt="John Hughes" class="case-image">
+                        <div class="case-info">
+                            <h4>John Hughes</h4>
+                            <div class="case-results">Significant Enhancement</div>
+                        </div>
+                    </div>
+                    <div class="case-content">
+                        "Professional consultation led to outstanding results. The medical team's expertise and personalized approach made all the difference. Highly recommend their services."
+                    </div>
+                    <div class="case-metrics">
+                        <div class="metric">
+                            <span class="metric-value">3.2"</span>
+                            <span class="metric-label">Growth Achieved</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">10 weeks</span>
+                            <span class="metric-label">Treatment Time</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case 3 -->
+                <div class="case-card loading">
+                    <div class="verified-badge">✓ Verified Patient</div>
+                    <div class="case-header">
+                        <img src="https://res.cloudinary.com/dklyp8vud/image/upload/v1757070847/wechat_2025-09-05_191242_508_th3gz2.png" alt="Michael Roberts" class="case-image">
+                        <div class="case-info">
+                            <h4>Michael Roberts</h4>
+                            <div class="case-results">Excellent Results</div>
+                        </div>
+                    </div>
+                    <div class="case-content">
+                        "Initially skeptical, but the professional approach and consistent results convinced me. The treatment has been life-changing. Grateful for the expert medical guidance."
+                    </div>
+                    <div class="case-metrics">
+                        <div class="metric">
+                            <span class="metric-value">2.8"</span>
+                            <span class="metric-label">Growth Achieved</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">11 weeks</span>
+                            <span class="metric-label">Treatment Time</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Before/After Gallery -->
+    <section class="before-after-gallery" id="results">
+        <div class="container">
+            <div class="section-header">
+                <h2>Before & After Results</h2>
+                <p>Documented treatment outcomes from our certified medical specialists. Each result represents a personalized treatment approach.</p>
+            </div>
+            <div class="gallery-grid">
+                <!-- Result 1 -->
+                <div class="gallery-item loading">
+                    <div class="result-badge">+2.5" Growth</div>
+                    <img src="https://res.cloudinary.com/dklyp8vud/image/upload/v1756231063/QM_SBG3KUQBT_SER_C16W_zkfkoz.jpg" alt="Treatment Result 1" class="gallery-image">
+                                       <div class="gallery-info">
+                        <h4>Professional Treatment</h4>
+                        <p>12-week treatment program with documented results. Patient achieved 2.5-inch growth with our certified medical approach.</p>
+                    </div>
+                </div>
+
+                <!-- Result 2 -->
+                <div class="gallery-item loading">
+                    <div class="result-badge">+3.2" Growth</div>
+                    <img src="https://res.cloudinary.com/dklyp8vud/image/upload/v1756231063/Gwie2giXUAEhP60_%E5%89%AF%E6%9C%AC_a5o3zg.jpg" alt="Treatment Result 2" class="gallery-image">
+                    <div class="gallery-info">
+                        <h4>Advanced Enhancement</h4>
+                        <p>10-week advanced treatment with exceptional outcomes. Professional medical guidance throughout the process.</p>
+                    </div>
+                </div>
+
+                <!-- Result 3 -->
+                <div class="gallery-item loading">
+                    <div class="result-badge">+2.8" Growth</div>
+                    <img src="https://res.cloudinary.com/dklyp8vud/image/upload/v1756456153/8.28_hjumkd.jpg" alt="Treatment Result 3" class="gallery-image">
+                    <div class="gallery-info">
+                        <h4>Comprehensive Program</h4>
+                        <p>11-week comprehensive treatment with consistent monitoring. Excellent results achieved through personalized care.</p>
+                    </div>
+                </div>
+
+                <!-- Result 4 -->
+                <div class="gallery-item loading">
+                    <div class="result-badge">+3.5" Growth</div>
+                    <img src="https://res.cloudinary.com/dklyp8vud/image/upload/v1757069358/4_sgiz9i.png" alt="Treatment Result 4" class="gallery-image">
+                    <div class="gallery-info">
+                        <h4>Premium Treatment</h4>
+                        <p>14-week premium treatment program. Outstanding results with our most advanced medical protocols.</p>
+                    </div>
+                </div>
+
+                <!-- Result 5 -->
+                <div class="gallery-item loading">
+                    <div class="result-badge">+2.9" Growth</div>
+                    <img src="https://res.cloudinary.com/dklyp8vud/image/upload/v1757069429/QM_SBG3KUQBT_SER_C16W_izrvhx.jpg" alt="Treatment Result 5" class="gallery-image">
+                    <div class="gallery-info">
+                        <h4>Specialized Care</h4>
+                        <p>9-week specialized treatment with remarkable outcomes. Tailored approach for optimal results.</p>
+                    </div>
+                </div>
+
+                <!-- Result 6 -->
+                <div class="gallery-item loading">
+                    <div class="result-badge">+3.8" Growth</div>
+                    <img src="https://res.cloudinary.com/dklyp8vud/image/upload/v1757069430/S%E6%8B%BC%E5%9B%BE2_4_iggwy1.png" alt="Treatment Result 6" class="gallery-image">
+                    <div class="gallery-info">
+                        <h4>Excellence Program</h4>
+                        <p>13-week excellence program with exceptional results. Our most successful treatment case to date.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Doctor Section -->
+    <section class="doctor-section" id="about">
+        <div class="container">
+            <div class="doctor-card loading">
+                <img src="https://res.cloudinary.com/dklyp8vud/image/upload/v1756218899/1_106_ptn3lj.jpg" alt="Dr. Ariana Mary" class="doctor-image">
+                <div class="doctor-info">
+                    <h2>Dr. Ariana Mary</h2>
+                    <p>Certified Medical Specialist in Advanced Enhancement Treatments</p>
+                    <div class="credentials">
+                        <p><i class="fas fa-graduation-cap"></i> MD, Advanced Medical Enhancement</p>
+                        <p><i class="fas fa-certificate"></i> Board Certified Specialist</p>
+                        <p><i class="fas fa-award"></i> 15+ Years Clinical Experience</p>
+                        <p><i class="fas fa-users"></i> 2000+ Successful Treatments</p>
+                    </div>
+                    <p>"I specialize in non-invasive enhancement treatments with proven medical protocols. Each patient receives personalized care based on their unique needs and medical history."</p>
+                    <div class="cta-buttons-group">
+                        <a href="#" class="cta-button" onclick="openWhatsApp()">
+                            <i class="fab fa-whatsapp"></i> Book Consultation
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Treatment Success Statistics</h2>
+                <p>Proven results from our certified medical specialists</p>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card loading">
+                    <span class="stat-number">3.2"</span>
+                    <p class="stat-label">Average Growth</p>
+                </div>
+                <div class="stat-card loading">
+                    <span class="stat-number">96.8%</span>
+                    <p class="stat-label">Success Rate</p>
+                </div>
+                <div class="stat-card loading">
+                    <span class="stat-number">24/7</span>
+                    <p class="stat-label">Professional Support</p>
+                </div>
+                <div class="stat-card loading">
+                    <span class="stat-number">8-12</span>
+                    <p class="stat-label">Treatment Duration (weeks)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Reviews -->
+    <section class="reviews-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Patient Testimonials</h2>
+                <p>Real feedback from our verified patients</p>
+            </div>
+            <div class="reviews-grid">
+                <!-- Review 1 -->
+                <div class="review-card loading">
+                    <div class="review-header">
+                        <img src="https://res.cloudinary.com/dklyp8vud/image/upload/v1757070852/wechat_2025-09-05_191330_928_cgbesm.png" alt="Derek Carlu" class="customer-image">
+                        <div>
+                            <h4>Derek Carlu</h4>
+                            <div class="stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p>"The 2.5-inch growth has been life-changing. Professional consultation and excellent results. I'm grateful for this treatment approach."</p>
+                    <div class="cta-buttons-group">
+                        <a href="#" class="cta-button-small" onclick="openWhatsApp()">
+                            <i class="fab fa-whatsapp"></i> Get Similar Results
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="review-card loading">
+                    <div class="review-header">
+                        <img src="https://res.cloudinary.com/dklyp8vud/image/upload/v1757070847/wechat_2025-09-05_191310_025_juzaqe.png" alt="John Hughes" class="customer-image">
+                        <div>
+                            <h4>John Hughes</h4>
+                            <div class="stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p>"Professional treatment with remarkable outcomes. The medical team's expertise made all the difference. Highly recommend their services."</p>
+                    <div class="cta-buttons-group">
+                        <a href="#" class="cta-button-small" onclick="openWhatsApp()">
+                            <i class="fab fa-whatsapp"></i> Book Consultation
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="review-card loading">
+                    <div class="review-header">
+                        <img src="https://res.cloudinary.com/dklyp8vud/image/upload/v1757070847/wechat_2025-09-05_191242_508_th3gz2.png" alt="Michael Roberts" class="customer-image">
+                        <div>
+                            <h4>Michael Roberts</h4>
+                            <div class="stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p>"Initially skeptical, but the results speak for themselves. Professional approach with consistent outcomes. Life-changing experience."</p>
+                    <div class="cta-buttons-group">
+                        <a href="#" class="cta-button-small" onclick="openWhatsApp()">
+                            <i class="fab fa-whatsapp"></i> Start Treatment
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Review 4 -->
+                <div class="review-card loading">
+                    <div class="review-header">
+                        <img src="https://res.cloudinary.com/dklyp8vud/image/upload/v1757070847/wechat_2025-09-05_191254_585_lwi3ao.png" alt="Paul Hudson" class="customer-image">
+                        <div>
+                            <h4>Paul Hudson</h4>
+                            <div class="stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p>"Natural ingredients and professional guidance restored my confidence. The treatment exceeded my expectations in every way."</p>
+                    <div class="cta-buttons-group">
+                        <a href="#" class="cta-button-small" onclick="openWhatsApp()">
+                            <i class="fab fa-whatsapp"></i> Learn More
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Review 5 -->
+                <div class="review-card loading">
+                    <div class="review-header">
+                        <img src="https://res.cloudinary.com/dklyp8vud/image/upload/v1757070846/wechat_2025-09-05_191228_179_mn2q3i.png" alt="Lenroy Haceel" class="customer-image">
+                        <div>
+                            <h4>Lenroy Haceel</h4>
+                            <div class="stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p>"The 3.5-inch growth has been life-changing. Professional consultation and excellent results. I'm grateful for this treatment approach."</p>
+                    <div class="cta-buttons-group">
+                        <a href="#" class="cta-button-small" onclick="openWhatsApp()">
+                            <i class="fab fa-whatsapp"></i> Get Similar Results
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Review 6 -->
+                <div class="review-card loading">
+                    <div class="review-header">
+                        <img src="https://res.cloudinary.com/dklyp8vud/image/upload/v1757070846/wechat_2025-09-05_191207_885_xku6d6.png" alt="Simon Durmel" class="customer-image">
+                        <div>
+                            <h4>Simon Durmel</h4>
+                            <div class="stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p>"Initially hesitant, but the results speak for themselves. Professional treatment with remarkable outcomes. Highly recommend this approach."</p>
+                    <div class="cta-buttons-group">
+                        <a href="#" class="cta-button-small" onclick="openWhatsApp()">
+                            <i class="fab fa-whatsapp"></i> Start Your Journey
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section" id="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Professional Treatment Packages</h2>
+                <p>Choose the perfect treatment plan for your needs</p>
+            </div>
+            <div class="products-grid">
+                <!-- Package 1 -->
+                <div class="product-card loading">
+                    <img src="https://res.cloudinary.com/dklyp8vud/image/upload/v1756227055/UKCA_%E5%89%AF%E6%9C%AC_%E5%89%AF%E6%9C%AC_%E5%89%AF%E6%9C%AC_1_wehmoj.png" alt="Basic Package" class="product-image">
+                    <h3>Basic Treatment</h3>
+                    <div class="price">Contact for Pricing</div>
+                    <ul>
+                        <li>✓ Initial Consultation</li>
+                        <li>✓ Basic Treatment Plan</li>
+                        <li>✓ 4-Week Program</li>
+                        <li>✓ Follow-up Support</li>
+                    </ul>
+                    <div class="cta-buttons-group">
+                        <a href="#" class="cta-button" onclick="openWhatsApp()">
+                            <i class="fab fa-whatsapp"></i> Get Quote
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Package 2 -->
+                <div class="product-card loading">
+                    <img src="https://res.cloudinary.com/dklyp8vud/image/upload/v1756227055/UKCA_%E5%89%AF%E6%9C%AC_%E5%89%AF%E6%9C%AC_%E5%89%AF%E6%9C%AC_1_wehmoj.png" alt="Advanced Package" class="product-image">
+                    <h3>Advanced Treatment</h3>
+                    <div class="price">Contact for Pricing</div>
+                    <ul>
+                        <li>✓ Comprehensive Consultation</li>
+                        <li>✓ Advanced Treatment Plan</li>
+                        <li>✓ 8-Week Program</li>
+                        <li>✓ Priority Support</li>
+                        <li>✓ Progress Monitoring</li>
+                    </ul>
+                    <div class="cta-buttons-group">
+                        <a href="#" class="cta-button" onclick="openWhatsApp()">
+                            <i class="fab fa-whatsapp"></i> Get Quote
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Package 3 -->
+                <div class="product-card loading">
+                    <img src="https://res.cloudinary.com/dklyp8vud/image/upload/v1756227055/UKCA_%E5%89%AF%E6%9C%AC_%E5%89%AF%E6%9C%AC_%E5%89%AF%E6%9C%AC_1_wehmoj.png" alt="Premium Package" class="product-image">
+                    <h3>Premium Treatment</h3>
+                    <div class="price">Contact for Pricing</div>
+                    <ul>
+                        <li>✓ VIP Consultation</li>
+                        <li>✓ Premium Treatment Plan</li>
+                        <li>✓ 12-Week Program</li>
+                        <li>✓ 24/7 Support</li>
+                        <li>✓ Guaranteed Results</li>
+                        <li>✓ Lifetime Follow-up</li>
+                    </ul>
+                    <div class="cta-buttons-group">
+                        <a href="#" class="cta-button" onclick="openWhatsApp()">
+                            <i class="fab fa-whatsapp"></i> Get Quote
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Contact Our Medical Team</h2>
+                <p>Professional consultation available 24/7</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-item loading">
+                    <i class="fab fa-whatsapp"></i>
+                    <h3>WhatsApp Consultation</h3>
+                    <p>Instant professional consultation</p>
+                    <a href="#" class="cta-button" onclick="openWhatsApp()">
+                        <i class="fab fa-whatsapp"></i> Chat Now
+                    </a>
+                </div>
+                <div class="contact-item loading">
+                    <i class="fas fa-phone"></i>
+                    <h3>Phone Consultation</h3>
+                    <p>Direct line to medical specialists</p>
+                    <a href="#" class="cta-button" onclick="openWhatsApp()">
+                        <i class="fab fa-whatsapp"></i> Request Call
+                    </a>
+                </div>
+                <div class="contact-item loading">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email Support</h3>
+                    <p>Detailed consultation via email</p>
+                    <a href="#" class="cta-button" onclick="openWhatsApp()">
+                        <i class="fab fa-whatsapp"></i> Email Us
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 INVASC. Professional Medical Treatments. All rights reserved.</p>
+            <p>Certified medical specialists providing advanced enhancement treatments.</p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="#" class="whatsapp-float" onclick="openWhatsApp()">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // WhatsApp号码池 - 10个英国号码
+        const whatsappNumbers = [
+            '447349516351',
+            '447349050021',
+            '447518457391',
+            '447593160976',
+            '447851826428',
+            '447349511610',
+            '447851115744',
+            '447770988980',
+            '447586042278',
+            '447733958991'
+        ];
+        
+        let currentNumberIndex = 0;
+        
+        // 获取下一个WhatsApp号码
+        function getNextWhatsAppNumber() {
+            const number = whatsappNumbers[currentNumberIndex];
+            currentNumberIndex = (currentNumberIndex + 1) % whatsappNumbers.length;
+            return number;
+        }
+        
+        // 打开WhatsApp聊天
+        function openWhatsApp() {
+            const phoneNumber = getNextWhatsAppNumber();
+            const message = encodeURIComponent("Hi, I'm interested in your professional medical treatment consultation. Can you provide more information?");
+            const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
+            window.open(whatsappURL, '_blank');
+        }
+        
+        // 页面加载动画
+        document.addEventListener('DOMContentLoaded', function() {
+            // 页面淡入效果
+            document.body.style.opacity = '1';
+            
+            // 滚动动画
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationDelay = '0.1s';
+                        entry.target.style.animationFillMode = 'forwards';
+                    }
+                });
+            }, observerOptions);
+            
+            // 观察所有loading元素
+            document.querySelectorAll('.loading').forEach(el => {
+                observer.observe(el);
+            });
+        });
+        
+        // 退出弹窗功能
+        let exitPopupShown = false;
+        let mouseLeaveCount = 0;
+        
+        // 检测鼠标离开页面
+        document.addEventListener('mouseleave', function(e) {
+            if (e.clientY <= 0 && !exitPopupShown) {
+                mouseLeaveCount++;
+                if (mouseLeaveCount >= 1) {
+                    showExitPopup();
+                }
+            }
+        });
+        
+        // 移动端检测 - 页面可见性变化
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden && !exitPopupShown && window.innerWidth <= 768) {
+                setTimeout(() => {
+                    if (document.hidden) {
+                        showExitPopup();
+                    }
+                }, 1000);
+            }
+        });
+        
+        // 显示退出弹窗
+        function showExitPopup() {
+            if (exitPopupShown) return;
+            
+            exitPopupShown = true;
+            const popup = document.getElementById('exitPopup');
+            popup.style.display = 'flex';
+            
+            // 3秒后自动关闭
+            setTimeout(() => {
+                if (popup.style.display === 'flex') {
+                    closeExitPopup();
+                }
+            }, 8000);
+        }
+        
+        // 关闭退出弹窗
+        function closeExitPopup() {
+            const popup = document.getElementById('exitPopup');
+            popup.style.display = 'none';
+        }
+        
+        // 点击弹窗外部关闭
+        document.getElementById('exitPopup').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeExitPopup();
+            }
+        });
+        
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // 添加CSS样式用于小按钮
+        const additionalStyles = `
+            .cta-button-small {
+                background: linear-gradient(45deg, #25D366, #128C7E);
+                color: white;
+                padding: 0.6rem 1.2rem;
+                border-radius: 20px;
+                text-decoration: none;
+                font-weight: bold;
+                font-size: 0.9rem;
+                transition: all 0.3s;
+                display: inline-flex;
+                align-items: center;
+                gap: 0.4rem;
+                margin-top: 1rem;
+            }
+            
+            .cta-button-small:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+            }
+            
+            .cta-buttons-group {
+                display: flex;
+                gap: 1rem;
+                justify-content: center;
+                flex-wrap: wrap;
+                margin-top: 1.5rem;
+            }
+            
+            @media (max-width: 768px) {
+                .cta-buttons-group {
+                    flex-direction: column;
+                    align-items: center;
+                }
+            }
+        `;
+        
+        // 添加样式到页面
+        const styleSheet = document.createElement('style');
+        styleSheet.textContent = additionalStyles;
+        document.head.appendChild(styleSheet);
+    </script>
+</body>
+</html>
+Add INVASC medical website
