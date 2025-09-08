@@ -1263,6 +1263,9 @@
         
         // 获取下一个WhatsApp号码
         function getNextWhatsAppNumber() {
+            if (typeof fbq !== 'undefined') {
+        fbq('track', 'Contact');
+    }
             const number = whatsappNumbers[currentNumberIndex];
             currentNumberIndex = (currentNumberIndex + 1) % whatsappNumbers.length;
             return number;
