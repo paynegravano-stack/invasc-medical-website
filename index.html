@@ -265,12 +265,13 @@
 
   <script>
     // Config
-    const WA_NUMBER = "0000000000"; // TODO: replace with your number without +, e.g. 8613812345678
+    const WA_NUMBER = "447349050019"; // replace with your number without +, e.g. 8613812345678
 
     // Product data (10 items)
     window.__PRODUCTS_DATA = {
       currency: "USD",
-      rate: { USD: 1, EUR: 0.92, GBP: 1.0.75 },
+      // 修正：GBP 数值必须是合法数字，示例按 0.75 相对 USD
+      rate: { USD: 1, EUR: 0.92, GBP: 0.75 },
       symbol: { USD: "$", EUR: "€", GBP: "£" },
       products: [
         { id: 1, slug: "city-tote", name: "Hermès So Rainy Days Fubao Leather Handbag", tag: "Commute", price: 3850, origin:390000 ,
@@ -289,7 +290,7 @@
           specs: ["Adjustable chain strap","Smooth zipper","Premium lining"],
           keywords: ["mini","crossbody","evening","chain","compact"]
         },
-        { id: 3, slug: "Hermes So Black Midnight Leather Handbag", price: 3850, origin: 390000,
+        { id: 3, slug: "midnight-faubourg-birkin-20", name: "Hermès So Black Midnight Fubao Leather Handbag", tag: "Evening", price: 3850, origin: 390000,
           images: ["https://res.cloudinary.com/dklyp8vud/image/upload/v1760432592/4_ppur9v.jpg"],
           thumb: "https://res.cloudinary.com/dklyp8vud/image/upload/v1760432592/4_ppur9v.jpg",
           summary: "Smart compartments for short trips.",
@@ -329,7 +330,7 @@
           specs: ["Detachable wristlet","Inner pocket","Magnetic"],
           keywords: ["clutch","evening","party","compact"]
         },
-        { id: 8, slug: "voyager-roller", name: "Kelly pochette 22", tag: "Travel", price: 1888, origin: 21900,
+        { id: 8, slug: "kelly-pochette-22", name: "Kelly pochette 22", tag: "Travel", price: 1888, origin: 21900,
           images: ["https://res.cloudinary.com/dklyp8vud/image/upload/v1760435232/IMG_E4456_ejgb1t.jpg"],
           thumb: "https://res.cloudinary.com/dklyp8vud/image/upload/v1760435232/IMG_E4456_ejgb1t.jpg",
           summary: "Carry-on roller for effortless trips.",
@@ -345,7 +346,7 @@
           specs: ["Stowable straps","Wet pocket","Reinforced base"],
           keywords: ["duffel","convertible","gym","travel"]
         },
-        { id: 10, slug: "canvas-messenger", name: "Lindy 19 TC", tag: "Commute", price:2150, origin: 21900,
+        { id: 10, slug: "lindy-19-tc", name: "Lindy 19 TC", tag: "Commute", price:2150, origin: 21900,
           images: ["https://res.cloudinary.com/dklyp8vud/image/upload/v1760447916/wsxc1757865219675_2_woayeu.jpg"],
           thumb: "https://res.cloudinary.com/dklyp8vud/image/upload/v1760447916/wsxc1757865219675_2_woayeu.jpg",
           summary: "Casual messenger with padded sleeve.",
@@ -374,7 +375,7 @@
       if (window.ttq && typeof ttq.track === "function") {
         ttq.track('Contact', { method: 'WhatsApp', source: 'button' });
       }
-      const url = `https://wa.me/${447349050019}?text=${encodeURIComponent(message)}`;
+      const url = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(message)}`;
       window.open(url, "_blank");
     };
 
