@@ -22,7 +22,7 @@
     .btn:hover{transform:translateY(-1px);box-shadow:0 10px 26px rgba(191,138,94,.35)}
     .btn.ghost{background:#fff;color:var(--brand);border-color:var(--brand);box-shadow:none}
     .btn.dark{background:#111;border-color:#111}
-    .btn.danger{background:var(--danger);border-color:var(--danger)}
+    .btn.danger{background:var(--danger);border-color:#ef4444}
     .btn.small{padding:8px 12px;font-weight:700}
     .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:#111;color:#fff;font-size:12px;letter-spacing:.5px}
 
@@ -60,8 +60,6 @@
     .card-badge{position:absolute;left:10px;top:10px}
     .card-body{padding:14px}
     .title{font-weight:700}
-    .price{font-weight:800}
-    .price del{color:#999;font-weight:600;margin-left:8px}
 
     .filters{display:flex;gap:10px;flex-wrap:wrap}
     .chip{border:1px solid #ddd;border-radius:999px;padding:8px 12px;cursor:pointer;font-weight:600;color:#333;background:#fff}
@@ -138,13 +136,8 @@
       </nav>
       <div class="bar">
         <input id="search" class="select" placeholder="Search bags, e.g. tote, travel" aria-label="Search">
-        <select id="currency" class="select" aria-label="Currency">
-          <option value="USD" selected>USD</option>
-          <option value="EUR">EUR</option>
-          <option value="GBP">GBP</option>
-        </select>
-        <button class="icon-btn" onclick="openWhatsApp('Hi, I\\'m interested in your bags.')" aria-label="Cart">
-          Cart <span id="cart-count" class="count">0</span>
+        <button class="icon-btn" onclick="openWhatsApp('Hi, I\\'m interested in your bags.', 'header')" aria-label="Contact via WhatsApp">
+          Contact <span class="count">WA</span>
         </button>
       </div>
     </div>
@@ -221,13 +214,13 @@
       <div>
         <h4 style="margin:0 0 10px;color:#fff">Social</h4>
         <a href="#">Instagram</a><br>
-        <a href="#">Twitter/X</a>
+        <a href="#">Twitter/X</a><br>
+        <a href="https://wa.me/447349050019?text=Hi%2C%20I%27m%20interested%20in%20your%20bags.%20%5Bfooter%5D" target="_blank" rel="noopener">WhatsApp</a>
       </div>
     </div>
     <div class="container" style="margin-top:20px;color:#777">© 2025 AURORA BAGS</div>
   </footer>
 
-  <!-- Exit intent modal -> Direct WhatsApp -->
   <div id="exitMask" class="exit-mask" role="dialog" aria-modal="true" aria-labelledby="exitTitle" aria-hidden="true">
     <div class="exit-modal">
       <div class="exit-head">
@@ -259,22 +252,20 @@
   </div>
 
   <div class="floating">
-    <button class="float-btn" onclick="openWhatsApp('Hi, I\\'m interested in your bags.')" title="WhatsApp">WA</button>
+    <button class="float-btn" onclick="openWhatsApp('Hi, I\\'m interested in your bags.', 'floating')" title="WhatsApp">WA</button>
     <button class="float-btn to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">↑</button>
   </div>
 
   <script>
     // Config
-    const WA_NUMBER = "447349050019"; // replace with your number without +, e.g. 8613812345678
+    const WA_NUMBER = "447349050019"; // without +
+  </script>
 
-    // Product data (10 items)
+  <script>
+    // 恢复你的完整产品数据（20 个）
     window.__PRODUCTS_DATA = {
-      currency: "USD",
-      // 修正：GBP 数值必须是合法数字，示例按 0.75 相对 USD
-      rate: { USD: 1, EUR: 0.92, GBP: 0.75 },
-      symbol: { USD: "$", EUR: "€", GBP: "£" },
       products: [
-        { id: 1, slug: "city-tote", name: "Hermès So Rainy Days Fubao Leather Handbag", tag: "Commute", price: 3850, origin:390000 ,
+        { id: 1, slug: "city-tote", name: "Hermès So Rainy Days Fubao Leather Handbag", tag: "Commute",
           images: ["https://res.cloudinary.com/dklyp8vud/image/upload/v1760432594/6_dosbrk.jpg"],
           thumb: "https://res.cloudinary.com/dklyp8vud/image/upload/v1760432594/6_dosbrk.jpg",
           summary: "Featherlight capacity, magnetic access, 13” laptop fits.",
@@ -282,7 +273,7 @@
           specs: ["Top-grain leather","Magnetic closure","Fits 13” laptop"],
           keywords: ["tote","commute","laptop","magnetic","leather"]
         },
-        { id: 2, slug: "mini-crossbody", name: "Hermès So First Snow Fubao Leather Handbag", tag: "Evening", price: 3850, origin: 390000,
+        { id: 2, slug: "mini-crossbody", name: "Hermès So First Snow Fubao Leather Handbag", tag: "Evening",
           images: ["https://res.cloudinary.com/dklyp8vud/image/upload/v1760432593/5_eunwf6.jpg"],
           thumb: "https://res.cloudinary.com/dklyp8vud/image/upload/v1760432593/5_eunwf6.jpg",
           summary: "Adorable silhouette with refined chain strap.",
@@ -290,7 +281,7 @@
           specs: ["Adjustable chain strap","Smooth zipper","Premium lining"],
           keywords: ["mini","crossbody","evening","chain","compact"]
         },
-        { id: 3, slug: "midnight-faubourg-birkin-20", name: "Hermès So Black Midnight Fubao Leather Handbag", tag: "Evening", price: 3850, origin: 390000,
+        { id: 3, slug: "midnight-faubourg-birkin-20", name: "Hermès So Black Midnight Fubao Leather Handbag", tag: "Evening",
           images: ["https://res.cloudinary.com/dklyp8vud/image/upload/v1760432592/4_ppur9v.jpg"],
           thumb: "https://res.cloudinary.com/dklyp8vud/image/upload/v1760432592/4_ppur9v.jpg",
           summary: "Smart compartments for short trips.",
@@ -298,7 +289,7 @@
           specs: ["Reinforced base","Shoe pocket","Trolley sleeve"],
           keywords: ["travel","weekend","duffel","organizer"]
         },
-        { id: 4, slug: "metro-backpack", name: "Hermès So sunset glow Fubao Leather Handbag", tag: "Commute", price: 3850, origin: 390000,
+        { id: 4, slug: "metro-backpack", name: "Hermès So Sunset Glow Fubao Leather Handbag", tag: "Commute",
           images: ["https://res.cloudinary.com/dklyp8vud/image/upload/v1760432592/3_ikrbu7.jpg"],
           thumb: "https://res.cloudinary.com/dklyp8vud/image/upload/v1760432592/3_ikrbu7.jpg",
           summary: "Slim profile with padded laptop sleeve.",
@@ -306,7 +297,7 @@
           specs: ["16” laptop sleeve","Water-repellent","Quick pocket"],
           keywords: ["backpack","commute","laptop","minimal"]
         },
-        { id: 5, slug: "studio-satchel", name: "Hermès So Rainy Days Fubao Leather Handbag", tag: "Commute", price: 3850, origin: 390000,
+        { id: 5, slug: "studio-satchel", name: "Hermès So Rainy Days Fubao Leather Handbag", tag: "Commute",
           images: ["https://res.cloudinary.com/dklyp8vud/image/upload/v1760432592/2_q3cdfh.jpg"],
           thumb: "https://res.cloudinary.com/dklyp8vud/image/upload/v1760432592/2_q3cdfh.jpg",
           summary: "Classic silhouette with modern hardware.",
@@ -314,7 +305,7 @@
           specs: ["Magnetic flap","Organizer panel","Shoulder strap"],
           keywords: ["satchel","work","classic","organizer"]
         },
-        { id: 6, slug: "soho-shoulder", name: "Hermès So Dayday BrownHouse Day Fubao Leather Handbag", tag: "Evening", price: 3850, origin: 390000,
+        { id: 6, slug: "soho-shoulder", name: "Hermès So Dayday BrownHouse Day Fubao Leather Handbag", tag: "Evening",
           images: ["https://res.cloudinary.com/dklyp8vud/image/upload/v1760432592/1_vaqrwm.jpg"],
           thumb: "https://res.cloudinary.com/dklyp8vud/image/upload/v1760432592/1_vaqrwm.jpg",
           summary: "Curved form with soft touch.",
@@ -322,7 +313,7 @@
           specs: ["Soft-touch body","Metal accents","Adjustable strap"],
           keywords: ["shoulder","evening","soft","elegant"]
         },
-        { id: 7, slug: "clutch-luxe", name: "Platinum BirKin25 togo leather touch crocodile", tag: "Evening", price: 1888, origin: 15600,
+        { id: 7, slug: "clutch-luxe", name: "Platinum BirKin25 togo leather touch crocodile", tag: "Evening",
           images: ["https://res.cloudinary.com/dklyp8vud/image/upload/v1760432628/wsxc1757870686510_0_b5uxla.jpg"],
           thumb: "https://res.cloudinary.com/dklyp8vud/image/upload/v1760432628/wsxc1757870686510_0_b5uxla.jpg",
           summary: "Statement piece for nights out.",
@@ -330,7 +321,7 @@
           specs: ["Detachable wristlet","Inner pocket","Magnetic"],
           keywords: ["clutch","evening","party","compact"]
         },
-        { id: 8, slug: "kelly-pochette-22", name: "Kelly pochette 22", tag: "Travel", price: 1888, origin: 21900,
+        { id: 8, slug: "kelly-pochette-22", name: "Kelly pochette 22", tag: "Travel",
           images: ["https://res.cloudinary.com/dklyp8vud/image/upload/v1760435232/IMG_E4456_ejgb1t.jpg"],
           thumb: "https://res.cloudinary.com/dklyp8vud/image/upload/v1760435232/IMG_E4456_ejgb1t.jpg",
           summary: "Carry-on roller for effortless trips.",
@@ -338,7 +329,7 @@
           specs: ["Carry-on size","360° wheels","TSA lock"],
           keywords: ["roller","travel","carry-on","wheels"]
         },
-        { id: 9, slug: "convert-duffel", name: "Platinum BirKin25 togo leather", tag: "Travel", price: 1888, origin: 21900,
+        { id: 9, slug: "convert-duffel", name: "Platinum BirKin25 togo leather", tag: "Travel",
           images: ["https://res.cloudinary.com/dklyp8vud/image/upload/v1760447841/IMG_E5724_l4nvjs.jpg"],
           thumb: "https://res.cloudinary.com/dklyp8vud/image/upload/v1760447841/IMG_E5724_l4nvjs.jpg",
           summary: "Duffel that converts to backpack.",
@@ -346,77 +337,131 @@
           specs: ["Stowable straps","Wet pocket","Reinforced base"],
           keywords: ["duffel","convertible","gym","travel"]
         },
-        { id: 10, slug: "lindy-19-tc", name: "Lindy 19 TC", tag: "Commute", price:2150, origin: 21900,
+        { id: 10, slug: "lindy-19-tc", name: "Lindy 19 TC", tag: "Commute",
           images: ["https://res.cloudinary.com/dklyp8vud/image/upload/v1760447916/wsxc1757865219675_2_woayeu.jpg"],
           thumb: "https://res.cloudinary.com/dklyp8vud/image/upload/v1760447916/wsxc1757865219675_2_woayeu.jpg",
           summary: "Casual messenger with padded sleeve.",
           description: "Sturdy canvas for daily carry.",
           specs: ["13” sleeve","Magnetic flap","Organizer"],
           keywords: ["messenger","canvas","commute","casual"]
+        },
+        { id: 11, slug: "Chanel ", name: "Chanel Classic Box Flap Bag in Black with Gold-Tone Hardware", tag: "Evening",
+          images: ["https://res.cloudinary.com/dklyp8vud/image/upload/v1760523203/38e01bb1_cslgpr.jpg"],
+          thumb: "https://res.cloudinary.com/dklyp8vud/image/upload/v1760523203/38e01bb1_cslgpr.jpg",
+          summary: "Soft silhouette with effortless charm.",
+          description: "Supple leather with roomy interior and magnetic top.",
+          specs: ["Soft-grain leather","Inner zip pocket","Magnetic top"],
+          keywords: ["hobo","leather","evening","soft"]
+        },
+        { id: 12, slug: "Chanel classic", name: "Chanel classic", tag: "Commute",
+          images: ["https://res.cloudinary.com/dklyp8vud/image/upload/v1760523198/6057d2ea_wwyceo.jpg"],
+          thumb: "https://res.cloudinary.com/dklyp8vud/image/upload/v1760523198/6057d2ea_wwyceo.jpg",
+          summary: "Slim, organized, professional.",
+          description: "A minimal brief with 14” sleeve and quick-access pocket.",
+          specs: ["14” sleeve","Quick-access","Detachable strap"],
+          keywords: ["brief","commute","work","minimal"]
+        },
+        { id: 13, slug: "Kelly25", name: "Kelly25 crocodile leather", tag: "Travel",
+          images: ["https://res.cloudinary.com/dklyp8vud/image/upload/v1760525674/wsxc1757871682457_0_y2xggo.jpg"],
+          thumb: "https://res.cloudinary.com/dklyp8vud/image/upload/v1760525674/wsxc1757871682457_0_y2xggo.jpg",
+          summary: "Made of crocodile leather, this bag is expensive due to its rare material, exquisite craftsmanship and unique design, making it a high-end collector's item.",
+          description: "Durable canvas body with leather handles.",
+          specs: ["Canvas + leather","Trolley sleeve","Shoe pocket"],
+          keywords: ["weekender","travel","canvas","leather"]
+        },
+        { id: 14, slug: "Kelly28", name: "Kelly28 crocodile leather", tag: "Evening",
+          images: ["https://res.cloudinary.com/dklyp8vud/image/upload/v1760526073/wsxc1757872242183_0_qfkosx.jpg"],
+          thumb: "https://res.cloudinary.com/dklyp8vud/image/upload/v1760526073/wsxc1757872242183_0_qfkosx.jpg",
+          summary: "The 28cm crocodile leather Kelly bag is a luxury product because crocodile leather is a rare and expensive leather.",
+          description: "The 28cm crocodile leather Kelly bag is a luxury product because crocodile leather is a rare and expensive leather..",
+          specs: ["Hidden magnets","Metal frame","Wristlet"],
+          keywords: ["clutch","evening","box","metal"]
+        },
+        { id: 15, slug: "Kelly25", name: "Kelly25 Epson leather outer seam", tag: "Commute",
+          images: ["https://res.cloudinary.com/dklyp8vud/image/upload/v1760526351/wsxc1757855075179_0_hpwgua.jpg"],
+          thumb: "https://res.cloudinary.com/dklyp8vud/image/upload/v1760526351/wsxc1757855075179_0_hpwgua.jpg",
+          summary: "The product size is 25 cm, made of Epsom leather, and has an inner seam. This bag is famous for its exquisite craftsmanship and high-quality materials. It is a classic Hermès style.",
+          description: "All-day tote for groceries, books, and more.",
+          specs: ["Heavy canvas","Inner pocket","Shoulder handles"],
+          keywords: ["tote","canvas","commute","daily"]
+        },
+        { id: 16, slug: "Kelly25", name: "kelly 25 Epsom leather inseam", tag: "Evening",
+          images: ["https://res.cloudinary.com/dklyp8vud/image/upload/v1760526539/IMG_6346_vrvm1h.jpg"],
+          thumb: "https://res.cloudinary.com/dklyp8vud/image/upload/v1760526539/IMG_6346_vrvm1h.jpg",
+          summary: "The product size is 25 cm, made of Epsom leather, and has an inner seam. This bag is famous for its exquisite craftsmanship and high-quality materials. It is a classic Hermès style.",
+          description: "Perfect for essentials with an adjustable strap.",
+          specs: ["Adjustable strap","Hidden pocket","Magnetic flap"],
+          keywords: ["mini","saddle","evening","compact"]
+        },
+        { id: 17, slug: "Kelly28", name: "Kelly28 Epson leather outer seam", tag: "Travel",
+          images: ["https://res.cloudinary.com/dklyp8vud/image/upload/v1760526631/wsxc1757854426809_2_sjtzvn.jpg"],
+          thumb: "https://res.cloudinary.com/dklyp8vud/image/upload/v1760526631/wsxc1757854426809_2_sjtzvn.jpg",
+          summary: "28cm Hermès Kelly bag in Epsom leather with a Sellier design",
+          description: "28cm Hermès Kelly bag in Epsom leather with a Sellier design.",
+          specs: ["28cm Hermès Kelly bag in Epsom leather with a Sellier design"],
+          keywords: ["roller","travel","luggage","24"]
+        },
+        { id: 18, slug: "Kelly mini", name: " Kelly19 Epson leather", tag: "Commute",
+          images: ["https://res.cloudinary.com/dklyp8vud/image/upload/v1760526777/wsxc1757859279193_2_zqf9tq.jpg"],
+          thumb: "https://res.cloudinary.com/dklyp8vud/image/upload/v1760526777/wsxc1757859279193_2_zqf9tq.jpg",
+          summary: "Lightweight and weather-friendly.",
+          description: "Everyday crossbody with quick-access front pocket.",
+          specs: ["Water-repellent","Quick pocket","Adjustable strap"],
+          keywords: ["nylon","crossbody","commute","lightweight"]
+        },
+        { id: 19, slug: "Kelly pochette 22", name: "Kelly pochette 22 Epsom leather", tag: "Commute",
+          images: ["https://res.cloudinary.com/dklyp8vud/image/upload/v1760526921/wsxc1757860617816_0_sqkic2.jpg"],
+          thumb: "https://res.cloudinary.com/dklyp8vud/image/upload/v1760526921/wsxc1757860617816_0_sqkic2.jpg",
+          summary: "Time-worn look, modern interior.",
+          description: "Organized compartments and padded sleeve.",
+          specs: ["22” sleeve","Organizer panel","Magnetic closure"],
+          keywords: ["messenger","leather","commute","vintage"]
+        },
+        { id: 20, slug: "Constance19", name: "Kangkang Constance19 Epson leather", tag: "Travel",
+          images: ["https://res.cloudinary.com/dklyp8vud/image/upload/v1760527014/wsxc1757859663715_2_zscnpk.jpg"],
+          thumb: "https://res.cloudinary.com/dklyp8vud/image/upload/v1760527014/wsxc1757859663715_2_zscnpk.jpg",
+          summary: "Day trips and city walks made easy.",
+          description: "Compact backpack with breathable straps.",
+          specs: ["Breathable straps","Side pockets","Light frame"],
+          keywords: ["backpack","daypack","travel","compact"]
         }
       ]
     };
+  </script>
 
-    // State (no cart)
-    const state = { currency: "USD", filter: "all", query: "" };
+  <script>
+    // 兜底 openWhatsApp（如已存在则不覆盖）
+    (function(){
+      if (typeof window.openWhatsApp !== "function") {
+        window.openWhatsApp = function(message, source){
+          if (window.ttq && typeof ttq.track === "function") {
+            ttq.track('Contact', { method: 'WhatsApp', source });
+          }
+          const url = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(message + (source ? ' ['+source+']' : ''));
+          window.open(url, "_blank", "noopener");
+        };
+      }
+    })();
+  </script>
 
-    // Utils
-    const fmt = (n) => {
-      const { rate, symbol } = window.__PRODUCTS_DATA;
-      const r = rate[state.currency] || 1;
-      const s = symbol[state.currency] || "$";
-      return s + (Math.round(n * r * 100) / 100).toFixed(2);
-    };
+  <script>
+    // 核心逻辑（与你原来一致）+ 新增的空白点击/搜索回车
     const getProducts = () => window.__PRODUCTS_DATA.products;
 
-    // WhatsApp
-    const openWhatsApp = (message) => {
-      // Pixel: Contact event via buttons (floating, card CTA, header)
+    // 如果页面没定义 openWhatsApp，则使用备选实现
+    const _openWhatsApp_impl = (message, source = 'button') => {
       if (window.ttq && typeof ttq.track === "function") {
-        ttq.track('Contact', { method: 'WhatsApp', source: 'button' });
+        ttq.track('Contact', { method: 'WhatsApp', source });
       }
       const url = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(message)}`;
       window.open(url, "_blank");
     };
+    if (typeof window.openWhatsApp !== "function") {
+      window.openWhatsApp = _openWhatsApp_impl;
+    }
 
-    // Exit intent -> WhatsApp
-    const EXIT_KEY = "aurora_exit_hidden_v1";
-    let exitShown = false;
+    const state = { filter: "all", query: "" };
 
-    const showExit = () => {
-      if(exitShown) return;
-      if(localStorage.getItem(EXIT_KEY)==="1") return;
-      const mask = document.getElementById("exitMask");
-      mask.classList.add("show");
-      mask.setAttribute("aria-hidden","false");
-      exitShown = true;
-    };
-
-    const dismissExit = (closeForever=false) => {
-      const mask = document.getElementById("exitMask");
-      mask.classList.remove("show");
-      mask.setAttribute("aria-hidden","true");
-      if(closeForever || (document.getElementById("exitNoMore") && document.getElementById("exitNoMore").checked)){
-        localStorage.setItem(EXIT_KEY,"1");
-      }
-    };
-
-    const exitToWhatsApp = () => {
-      const source = "exit-intent";
-      const ts = new Date().toISOString();
-      const url = location.href;
-      const message = `Hi, I\\'d like to chat about your bags. Source: ${source}, Page: ${url}, Time: ${ts}`;
-      // Pixel: Contact event via exit-intent modal
-      if (window.ttq && typeof ttq.track === "function") {
-        ttq.track('Contact', { method: 'WhatsApp', source: 'exit-intent' });
-      }
-      // mark as not to show again after successful open
-      localStorage.setItem(EXIT_KEY, "1");
-      openWhatsApp(message);
-      dismissExit(true);
-    };
-
-    // Product card: direct WhatsApp inquiry per item
     const productCard = (p) => {
       const msg = `Hi, I\\'m interested in: ${p.name}`;
       return `
@@ -428,9 +473,8 @@
           <div class="card-body">
             <div class="title">${p.name}</div>
             <div class="muted" style="margin:6px 0">${p.summary}</div>
-            <div class="price">${fmt(p.price)} <del>${fmt(p.origin)}</del></div>
             <div style="display:flex;gap:10px;margin-top:10px">
-              <button class="btn small" onclick="openWhatsApp('${msg}')">WhatsApp inquiry</button>
+              <button class="btn small" onclick="openWhatsApp('${msg}', 'card')">WhatsApp inquiry</button>
               <a class="btn small ghost" href="#catalog" onclick="viewDetail(${p.id})">Details</a>
             </div>
           </div>
@@ -438,7 +482,6 @@
       `;
     };
 
-    // Grid render
     const renderGrid = () => {
       const listEl = document.getElementById("grid");
       const hotEl = document.getElementById("grid-hot");
@@ -453,25 +496,20 @@
         );
         return matchFilter && matchQuery;
       });
-      listEl.innerHTML = list.map(productCard).join("");
-
+      if (listEl) listEl.innerHTML = list.map(productCard).join("");
       const hot = getProducts().slice(0, Math.min(12, getProducts().length));
-      hotEl.innerHTML = hot.map(productCard).join("");
+      if (hotEl) hotEl.innerHTML = hot.map(productCard).join("");
     };
 
-    // Details modal with WhatsApp button
     const viewDetail = (id) => {
       const p = getProducts().find(x => x.id === id);
       if(!p) return;
 
-      // Pixel: ViewContent event when opening product detail modal
       if (window.ttq && typeof ttq.track === "function") {
         ttq.track('ViewContent', {
           content_type: 'product',
           content_name: p.name || '',
-          content_id: p.slug || String(p.id),
-          value: p.price,
-          currency: state.currency || 'USD'
+          content_id: p.slug || String(p.id)
         });
       }
 
@@ -488,9 +526,8 @@
               <p class="muted" style="margin:10px 0">${p.summary || ''}</p>
               <p>${p.description || ''}</p>
               <ul>${(p.specs||[]).map(s=>`<li>${s}</li>`).join("")}</ul>
-              <div class="price" style="margin:10px 0">${fmt(p.price)} <del>${fmt(p.origin)}</del></div>
-              <div style="display:flex;gap:10px;flex-wrap:wrap">
-                <button class="btn" onclick="openWhatsApp('${msg}')">WhatsApp inquiry</button>
+              <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px">
+                <button class="btn" onclick="openWhatsApp('${msg}', 'detail')">WhatsApp inquiry</button>
                 <button class="btn ghost" onclick="closeModal()">Close</button>
               </div>
             </div>
@@ -500,7 +537,6 @@
       openModal(html);
     };
 
-    // Simple modal
     let modalEl;
     const openModal = (content) => {
       if(!modalEl){
@@ -521,7 +557,40 @@
     };
     const closeModal = () => { if(modalEl) modalEl.style.display="none"; };
 
-    // Triggers: mouse leave top (desktop) + first reach bottom (mobile)
+    // Exit intent
+    const EXIT_KEY = "aurora_exit_hidden_v1";
+    let exitShown = false;
+    const showExit = () => {
+      if(exitShown) return;
+      if(localStorage.getItem(EXIT_KEY)==="1") return;
+      const mask = document.getElementById("exitMask");
+      if(!mask) return;
+      mask.classList.add("show");
+      mask.setAttribute("aria-hidden","false");
+      exitShown = true;
+    };
+    const dismissExit = (closeForever=false) => {
+      const mask = document.getElementById("exitMask");
+      if(!mask) return;
+      mask.classList.remove("show");
+      mask.setAttribute("aria-hidden","true");
+      if(closeForever || (document.getElementById("exitNoMore") && document.getElementById("exitNoMore").checked)){
+        localStorage.setItem(EXIT_KEY,"1");
+      }
+    };
+    const exitToWhatsApp = () => {
+      const source = "exit-intent";
+      const ts = new Date().toISOString();
+      const url = location.href;
+      const message = `Hi, I\\'d like to chat about your bags. Source: ${source}, Page: ${url}, Time: ${ts}`;
+      if (window.ttq && typeof ttq.track === "function") {
+        ttq.track('Contact', { method: 'WhatsApp', source });
+      }
+      localStorage.setItem(EXIT_KEY, "1");
+      openWhatsApp(message, source);
+      dismissExit(true);
+    };
+
     document.addEventListener("mouseout", (e)=>{
       if(e.clientY <= 0){ showExit(); }
     });
@@ -534,12 +603,10 @@
         showExit();
       }
     });
-    // Click mask to close
     document.getElementById("exitMask").addEventListener("click",(e)=>{
       if(e.target.id==="exitMask"){ dismissExit(); }
     });
 
-    // Controls
     const setFilter = (tag) => {
       state.filter = tag;
       document.querySelectorAll(".chip").forEach(el=>{
@@ -552,18 +619,56 @@
       if(el) el.scrollIntoView({behavior:"smooth"});
     };
 
-    // Search/currency events
     document.getElementById("search").addEventListener("input", (e)=>{
       state.query = e.target.value || "";
       renderGrid();
     });
-    document.getElementById("currency").addEventListener("change",(e)=>{
-      state.currency = e.target.value;
-      renderGrid();
-    });
 
-    // Init
     renderGrid();
+  </script>
+
+  <script>
+    // 新增：空白点击 -> WhatsApp（弹窗显示时暂停；Esc 可临时跳过一次）[blank]
+    (function(){
+      var skipOnce = false;
+      document.addEventListener('keydown', function(e){
+        if (e.key === 'Escape') skipOnce = true;
+      }, true);
+
+      document.addEventListener('click', function(e){
+        if (skipOnce) { skipOnce = false; return; }
+        var mask = document.getElementById('exitMask');
+        if (mask && mask.classList.contains('show')) return;
+
+        var t = e.target;
+        var INTERACTIVE_TAGS = ['A','BUTTON','INPUT','SELECT','TEXTAREA','LABEL','SUMMARY','DETAILS','VIDEO','AUDIO','IMG'];
+        if (INTERACTIVE_TAGS.includes(t.tagName)) return;
+        if (t.closest('a, button, [onclick], [data-clickable="true"], .card, .chip, header, footer')) return;
+
+        var active = document.activeElement;
+        if (active && ['INPUT','TEXTAREA','SELECT'].includes(active.tagName)) return;
+
+        openWhatsApp("Hi, I'm interested in your bags.", "blank");
+      }, true);
+    })();
+  </script>
+
+  <script>
+    // 新增：搜索框回车 -> WhatsApp（带查询词归因）[search]
+    (function(){
+      var input = document.getElementById('search');
+      if (!input) return;
+      input.addEventListener('keydown', function(e){
+        if (e.key === 'Enter') {
+          var q = (input.value || '').trim();
+          if (q.length) {
+            openWhatsApp("Hi, I'm looking for: " + q, "search");
+          } else {
+            openWhatsApp("Hi, I'm interested in your bags.", "search");
+          }
+        }
+      });
+    })();
   </script>
 </body>
 </html>
