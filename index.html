@@ -2,143 +2,159 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AURORA BAGS · Light-luxury bags</title>
-  <meta name="description" content="Handcrafted light-luxury bags. Commute, travel and evening collections.">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>AURORA BAGS · Curated Bags</title>
+  <meta name="description" content="Curated 20 designer-inspired bags. Instant view, search and brand filters.">
   <style>
-    :root{
-      --bg:#fff; --text:#1a1a1a; --muted:#666; --soft:#f5f5f5;
-      --brand:#bfa58e; --brand-2:#222; --radius:14px;
-      --shadow:0 10px 30px rgba(0,0,0,.08);
-      --danger:#ef4444; --success:#10b981;
-    }
+    :root{ --bg:#fff; --text:#1a1a1a; --muted:#666; --soft:#f5f5f5; --brand:#bfa58e; --radius:14px; --shadow:0 8px 24px rgba(0,0,0,.08); --danger:#ef4444; }
     *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Arial}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",Arial;-webkit-tap-highlight-color:transparent}
     a{color:inherit;text-decoration:none}
     img{max-width:100%;display:block}
 
     .container{max-width:1200px;margin:0 auto;padding:0 20px}
-    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:12px 18px;border-radius:999px;border:1px solid var(--brand);color:#fff;background:linear-gradient(135deg,var(--brand), #d3a578);font-weight:700;cursor:pointer;transition:.2s transform,.2s box-shadow;box-shadow:0 6px 18px rgba(191,138,94,.25)}
-    .btn:hover{transform:translateY(-1px);box-shadow:0 10px 26px rgba(191,138,94,.35)}
-    .btn.ghost{background:#fff;color:var(--brand);border-color:var(--brand);box-shadow:none}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:12px 18px;border-radius:12px;border:1px solid var(--brand);color:#fff;background:linear-gradient(135deg,var(--brand), #d3a578);font-weight:700;cursor:pointer;transition:transform .15s ease, box-shadow .15s ease;box-shadow:0 6px 18px rgba(191,138,94,.22);touch-action:manipulation}
+    .btn:active{transform:scale(0.98)}
+    .btn.ghost{background:#fff;color:var(--brand);border-color:#fff;box-shadow:none}
     .btn.dark{background:#111;border-color:#111}
-    .btn.danger{background:var(--danger);border-color:#ef4444}
-    .btn.small{padding:8px 12px;font-weight:700}
+    .btn.small{padding:10px 12px;font-weight:700}
     .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:#111;color:#fff;font-size:12px;letter-spacing:.5px}
 
-    header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.85);backdrop-filter:saturate(180%) blur(10px);border-bottom:1px solid #eee}
-    .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
-    .brand{display:flex;align-items:center;gap:12px;font-weight:800;font-size:18px;letter-spacing:1px}
+    header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:saturate(180%) blur(10px);border-bottom:1px solid #eee}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:60px;padding:8px 0}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px;letter-spacing:1px}
     .brand-logo{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--brand), #e6c3a5)}
-    .nav-links{display:flex;gap:22px;flex-wrap:wrap}
-    .nav-links a{color:#333;font-weight:600;opacity:.85}
-    .nav-links a:hover{opacity:1}
-    .bar{display:flex;gap:10px;align-items:center}
-    .select{border:1px solid #ddd;border-radius:10px;padding:8px 12px;background:#fff}
-    .icon-btn{position:relative;border:1px solid #eee;background:#fff;border-radius:12px;padding:8px 12px;cursor:pointer}
-    .count{position:absolute;right:-6px;top:-6px;background:#111;color:#fff;border-radius:999px;font-size:11px;padding:2px 6px}
+    .nav-links{display:flex;gap:18px;flex-wrap:wrap}
+    .nav-links a{color:#333;font-weight:600;opacity:.9}
+    .bar{display:flex;gap:10px;align-items:center;width:100%}
+    .select{border:1px solid #ddd;border-radius:12px;padding:12px 14px;background:#fff;width:100%;font-size:15px}
+    .icon-btn{position:relative;border:1px solid #eee;background:#fff;border-radius:12px;padding:10px 12px;cursor:pointer;display:inline-flex;align-items:center;gap:8px}
+    .count{display:inline-flex;align-items:center;justify-content:center;min-width:24px;height:18px;border-radius:999px;background:#111;color:#fff;font-size:11px;padding:0 6px}
 
-    .topbar{display:flex;gap:10px;align-items:center;justify-content:center;background:#111;color:#fff;height:36px;font-size:13px}
+    .topbar{display:flex;gap:10px;align-items:center;justify-content:center;background:#111;color:#fff;min-height:34px;font-size:12px;padding:6px 10px}
 
     .hero{position:relative;overflow:hidden}
-    .hero-wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center;padding:56px 0}
-    .hero h1{font-size:44px;line-height:1.1;margin:0 0 14px;font-weight:800;letter-spacing:2px}
-    .hero p{color:var(--muted);font-size:16px;margin:0 0 24px}
-    .hero-card{background:var(--soft);border-radius:var(--radius);padding:18px;display:grid;gap:10px}
+    .hero-wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center;padding:48px 0}
+    .hero h1{font-size:36px;line-height:1.15;margin:0 0 12px;font-weight:800;letter-spacing:.2px}
+    .hero p{color:var(--muted);font-size:16px;margin:0 0 18px}
+    .hero-card{background:var(--soft);border-radius:var(--radius);padding:16px;display:grid;gap:10px}
 
-    .section{padding:56px 0}
-    .section .head{display:flex;align-items:end;justify-content:space-between;margin-bottom:24px;gap:16px;flex-wrap:wrap}
-    .section .head h2{margin:0;font-size:28px;font-weight:800}
+    .section{padding:48px 0}
+    .section .head{display:flex;align-items:end;justify-content:space-between;margin-bottom:16px;gap:12px;flex-wrap:wrap}
+    .section .head h2{margin:0;font-size:24px;font-weight:800}
     .muted{color:var(--muted)}
 
-    .grid{display:grid;gap:18px}
+    .grid{display:grid;gap:14px}
     .grid.products{grid-template-columns:repeat(4,minmax(0,1fr))}
-    .card{border:1px solid #eee;border-radius:16px;overflow:hidden;background:#fff;transition:.2s transform,.2s box-shadow}
-    .card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
-    .card-media{aspect-ratio:4/5;background:#f3f3f3;position:relative}
+    .card{border:1px solid #eee;border-radius:16px;overflow:hidden;background:#fff;transition:transform .15s ease, box-shadow .15s ease}
+    .card-media{aspect-ratio:4/5;background:linear-gradient(180deg,#f1f1f1,#ededed);position:relative}
     .card-media img{width:100%;height:100%;object-fit:cover}
     .card-badge{position:absolute;left:10px;top:10px}
-    .card-body{padding:14px}
+    .card-body{padding:12px}
     .title{font-weight:700}
 
-    .filters{display:flex;gap:10px;flex-wrap:wrap}
-    .chip{border:1px solid #ddd;border-radius:999px;padding:8px 12px;cursor:pointer;font-weight:600;color:#333;background:#fff}
+    .filters{display:flex;gap:8px;flex-wrap:wrap}
+    .chip{border:1px solid #ddd;border-radius:999px;padding:8px 12px;cursor:pointer;font-weight:700;color:#333;background:#fff}
     .chip.active{border-color:#111;background:#111;color:#fff}
 
-    .drawer{display:none}
-    footer{background:#111;color:#bbb;padding:32px 0;margin-top:40px}
+    footer{background:#111;color:#bbb;padding:28px 0;margin-top:36px}
     footer a{color:#ddd}
-    .cols{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:18px}
+    .cols{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:16px}
     .newsletter{display:flex;gap:10px}
     .newsletter input{flex:1;border-radius:999px;border:1px solid #444;background:#1a1a1a;color:#fff;padding:12px 14px;outline:none}
-    .floating{position:fixed;right:16px;bottom:16px;display:grid;gap:10px;z-index:60}
-    .float-btn{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#25d366,#2bdc72);color:#fff;font-weight:800;cursor:pointer;box-shadow:0 8px 20px rgba(37,211,102,.35)}
+    .floating{position:fixed;right:16px;bottom:16px;display:grid;gap:12px;z-index:60;padding-bottom:env(safe-area-inset-bottom)}
+    .float-btn{width:56px;height:56px;border-radius:16px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#25d366,#2bdc72);color:#fff;font-weight:800;cursor:pointer;box-shadow:0 10px 24px rgba(37,211,102,.28)}
     .to-top{background:#111}
 
-    /* Exit intent modal */
-    .exit-mask{position:fixed;inset:0;background:rgba(0,0,0,.5);display:none;align-items:center;justify-content:center;z-index:100}
+    .exit-mask{position:fixed;inset:0;background:rgba(0,0,0,.5);display:none;align-items:flex-end;justify-content:center;z-index:100;padding:0}
     .exit-mask.show{display:flex}
-    .exit-modal{width:min(680px,92vw);background:#fff;border-radius:16px;overflow:hidden;box-shadow:var(--shadow)}
-    .exit-head{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:1px solid #eee}
-    .exit-body{padding:16px}
-    .exit-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-    .exit-note{background:var(--soft);padding:14px;border-radius:12px}
-    .exit-foot{padding:14px 16px;border-top:1px solid #eee;display:flex;gap:10px;justify-content:flex-end}
+    .exit-modal{width:100%;max-width:960px;background:#fff;border-radius:16px 16px 0 0;overflow:hidden;box-shadow:var(--shadow);max-height:92vh;display:flex;flex-direction:column}
+    .exit-head{position:sticky;top:0;background:#fff;display:flex;align-items:center;justify-content:space-between;padding:12px 14px;border-bottom:1px solid #eee;z-index:1}
+    .exit-body{padding:14px;overflow:auto}
+    .exit-footer-fixed{position:sticky;bottom:0;background:#fff;border-top:1px solid #eee;padding:10px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+
+    .detail-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+    @media (max-width:640px){ .detail-grid{grid-template-columns:1fr} }
+
+    .tap{ position:relative; display:block; cursor:pointer; transition:transform .12s ease, filter .12s ease, box-shadow .12s ease; overflow:hidden; border-radius:12px; }
+    .tap:active{ transform: scale(0.985); filter: brightness(0.98); }
+    .tap::after{ content:""; position:absolute; left: var(--ripple-x, 50%); top: var(--ripple-y, 50%); width: 12px; height: 12px; background: radial-gradient(circle, rgba(255,255,255,0.45) 0%, rgba(255,255,255,0.15) 40%, rgba(255,255,255,0) 60%); transform: translate(-50%, -50%) scale(0); opacity:0; pointer-events:none; border-radius:50%; }
+    .tap.is-rippling::after{ animation: ripple-expand 420ms ease-out forwards; }
+    @keyframes ripple-expand{ 0% { transform: translate(-50%, -50%) scale(0); opacity:.5; } 70%{ transform: translate(-50%, -50%) scale(22); opacity:.28; } 100%{ transform: translate(-50%, -50%) scale(36); opacity:0; } }
 
     @media (max-width:1024px){
       .grid.products{grid-template-columns:repeat(3,minmax(0,1fr))}
       .cols{grid-template-columns:1fr 1fr}
-      .hero-wrap{grid-template-columns:1fr}
-      .exit-grid{grid-template-columns:1fr}
+      .hero-wrap{grid-template-columns:1fr;gap:18px;padding:36px 0}
+      .hero h1{font-size:30px}
     }
     @media (max-width:640px){
-      .grid.products{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .nav{flex-direction:column;align-items:stretch}
+      .nav .bar{order:2}
+      .nav .brand, .nav .nav-links{order:1;justify-content:space-between;width:100%}
+      .topbar{font-size:11px}
+      .grid.products{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+      .card-body{padding:10px}
+      .btn.small{padding:12px}
+      .floating{right:14px;bottom:14px}
     }
+    @media (max-width:360px){
+      .grid.products{grid-template-columns:1fr}
+    }
+
+    /* Exit-Intent Promo Modal */
+    .promo-mask{position:fixed;inset:0;background:rgba(0,0,0,.55);display:none;align-items:center;justify-content:center;z-index:200}
+    .promo-mask.show{display:flex}
+    .promo{width:92vw;max-width:520px;background:#fff;border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,.2);overflow:hidden;display:flex;flex-direction:column}
+    .promo-head{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;border-bottom:1px solid #eee}
+    .promo-body{padding:16px}
+    .promo-title{font-size:18px;font-weight:800;margin:0 0 8px}
+    .promo-desc{color:#555;margin:0 0 14px}
+    .promo-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:12px 14px;border-top:1px solid #eee;background:#fafafa}
   </style>
 
-  <!-- TikTok Pixel Code Start -->
+  <!-- TikTok Pixel -->
   <script>
-  !function (w, d, t) {
-    w.TiktokAnalyticsObject=t;
-    var ttq=w[t]=w[t]||[];
-    ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"];
-    ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};
-    for(var i=0;i<ttq.methods.length;i++) ttq.setAndDefer(ttq,ttq.methods[i]);
-    ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++) ttq.setAndDefer(e,ttq.methods[n]);return e};
-    ttq.load=function(e,n){
-      var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;
-      ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};
-      n=document.createElement("script");
-      n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;
-      e=document.getElementsByTagName("script")[0];
-      e.parentNode.insertBefore(n,e)
-    };
-    ttq.load('D3N5AURC77U8AFC9QKO0');
-    ttq.page();
-  }(window, document, 'ttq');
+    !function (w, d, t) {
+      w.TiktokAnalyticsObject=t;
+      var ttq=w[t]=w[t]||[];
+      ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"];
+      ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};
+      for(var i=0;i<ttq.methods.length;i++) ttq.setAndDefer(ttq,ttq.methods[i]);
+      ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++) ttq.setAndDefer(e,ttq.methods[n]);return e};
+      ttq.load=function(e,n){
+        var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;
+        ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};
+        n=document.createElement("script");
+        n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;
+        e=document.getElementsByTagName("script")[0];
+        e.parentNode.insertBefore(n,e)
+      };
+      ttq.load('D3N5AURC77U8AFC9QKO0');
+      ttq.page();
+    }(window, document, 'ttq');
   </script>
-  <!-- TikTok Pixel Code End -->
 </head>
 <body>
-  <div class="topbar">NEW Free shipping · 7-day returns</div>
+  <div class="topbar">FREE SHIPPING · 7-DAY RETURNS</div>
   <header>
     <div class="container nav">
       <div class="brand">
         <div class="brand-logo" aria-hidden="true"></div>
         <span>AURORA BAGS</span>
+        <nav class="nav-links" aria-label="Main" style="margin-left:auto">
+          <a href="#" onclick="scrollToSection('catalog')">All</a>
+          <a href="#" onclick="scrollToSection('contact')">Contact</a>
+        </nav>
       </div>
-      <nav class="nav-links" aria-label="Main">
-        <a href="#" onclick="scrollToSection('catalog')">Catalog</a>
-        <a href="#" onclick="scrollToSection('bestsellers')">Bestsellers</a>
-        <a href="#" onclick="scrollToSection('craft')">Craft</a>
-        <a href="#" onclick="scrollToSection('reviews')">Reviews</a>
-        <a href="#" onclick="scrollToSection('contact')">Contact</a>
-      </nav>
       <div class="bar">
-        <input id="search" class="select" placeholder="Search bags, e.g. tote, travel" aria-label="Search">
-        <button class="icon-btn" onclick="openWhatsApp('Hi, I\\'m interested in your bags.', 'header')" aria-label="Contact via WhatsApp">
-          Contact <span class="count">WA</span>
-        </button>
+        <div style="display:flex;gap:8px;align-items:center;width:100%">
+          <input id="search" class="select" placeholder="Search by brand or model" aria-label="Search">
+          <button class="icon-btn" onclick="openWhatsApp('Hi, I need assistance.', 'header')" aria-label="WhatsApp">
+            Contact <span class="count">WA</span>
+            <span id="wa-current-label" style="margin-left:6px;font-size:11px;color:#999"></span>
+          </button>
+        </div>
       </div>
     </div>
   </header>
@@ -146,19 +162,24 @@
   <section class="hero">
     <div class="container hero-wrap">
       <div>
-        <span class="badge">HANDCRAFTED</span>
-        <h1>Light-luxury bags, everyday elegance</h1>
-        <p>Commute with grace, travel with ease, and enjoy evenings with timeless designs.</p>
+        <span class="badge">20 Picks</span>
+        <h1>Everyday Elegance</h1>
+        <p>Perfect for commute, travel and evening looks. Chat on WhatsApp for more shots.</p>
         <div class="hero-card">
           <div style="display:flex;gap:10px;flex-wrap:wrap">
-            <button class="btn" onclick="scrollToSection('catalog')">Shop now</button>
-            <button class="btn ghost" onclick="scrollToSection('bestsellers')">Bestsellers</button>
+            <button class="btn" style="width:100%;max-width:420px" onclick="scrollToSection('catalog')">Shop now</button>
           </div>
           <div class="muted">Free shipping · 7-day returns · Secure checkout</div>
         </div>
       </div>
       <div>
-        <img src="https://res.cloudinary.com/dklyp8vud/image/upload/v1760448838/wechat_2025-10-14_143338_593_hwutka.png" alt="Hero bag photo">
+        <img src="https://res.cloudinary.com/dxatkiuow/image/upload/v1763539431/wechat_2025-10-14_143338_593_xnvlcr.png"
+             alt="Hero bag"
+             referrerpolicy="no-referrer"
+             crossorigin="anonymous"
+             decoding="async"
+             loading="eager"
+             onerror="this.onerror=null;this.src='https://res.cloudinary.com/dklyp8vud/image/upload/v1760526539/IMG_6346_vrvm1h.jpg';">
       </div>
     </div>
   </section>
@@ -166,509 +187,395 @@
   <section id="catalog" class="section">
     <div class="container">
       <div class="head">
-        <h2>All bags</h2>
+        <h2>Catalog</h2>
         <div class="filters">
           <button class="chip active" data-filter="all" onclick="setFilter('all')">All</button>
-          <button class="chip" data-filter="Commute" onclick="setFilter('Commute')">Commute</button>
-          <button class="chip" data-filter="Evening" onclick="setFilter('Evening')">Evening</button>
-          <button class="chip" data-filter="Travel" onclick="setFilter('Travel')">Travel</button>
+          <button class="chip" data-filter="Hermes" onclick="setFilter('Hermes')">Hermes</button>
+          <button class="chip" data-filter="LV" onclick="setFilter('LV')">LV</button>
+          <button class="chip" data-filter="Chanel" onclick="setFilter('Chanel')">Chanel</button>
         </div>
       </div>
       <div id="grid" class="grid products"></div>
     </div>
   </section>
 
-  <section id="bestsellers" class="section">
-    <div class="container">
-      <div class="head">
-        <h2>Bestsellers</h2>
-        <div class="muted">People’s favorites this month</div>
-      </div>
-      <div id="grid-hot" class="grid products"></div>
-    </div>
-  </section>
-
   <footer id="contact">
     <div class="container cols">
       <div>
-        <h3 style="margin:0 0 10px;color:#fff">AURORA</h3>
-        <p>Light-luxury bags crafted for everyday elegance.</p>
+        <div class="title" style="color:#fff;margin-bottom:8px">AURORA BAGS</div>
+        <div>Curated designer-inspired bags for daily elegance.</div>
+      </div>
+      <div>
+        <div class="title" style="color:#fff;margin-bottom:8px">Shop</div>
+        <a href="#" onclick="scrollToSection('catalog')">All</a><br>
+      </div>
+      <div>
+        <div class="title" style="color:#fff;margin-bottom:8px">Company</div>
+        <a href="#">About</a><br>
+        <a href="#">Craft</a>
+      </div>
+      <div>
+        <div class="title" style="color:#fff;margin-bottom:8px">Newsletter</div>
         <div class="newsletter">
-          <input placeholder="Email for updates">
-          <button class="btn small">Subscribe</button>
+          <input id="newsletterEmail" placeholder="Your email">
+          <button id="subscribeBtn" class="btn small dark">Subscribe</button>
         </div>
-        <p style="font-size:12px;color:#777;margin-top:10px">
-          By using WhatsApp you agree to be contacted for product information. Privacy policy applies.
-        </p>
-      </div>
-      <div>
-        <h4 style="margin:0 0 10px;color:#fff">Shop</h4>
-        <a href="#" onclick="scrollToSection('catalog')">Catalog</a><br>
-        <a href="#" onclick="scrollToSection('bestsellers')">Bestsellers</a>
-      </div>
-      <div>
-        <h4 style="margin:0 0 10px;color:#fff">Support</h4>
-        <a href="#">Shipping</a><br>
-        <a href="#">Returns</a>
-      </div>
-      <div>
-        <h4 style="margin:0 0 10px;color:#fff">Social</h4>
-        <a href="#">Instagram</a><br>
-        <a href="#">Twitter/X</a><br>
-        <a href="https://wa.me/447349050019?text=Hi%2C%20I%27m%20interested%20in%20your%20bags.%20%5Bfooter%5D" target="_blank" rel="noopener">WhatsApp</a>
       </div>
     </div>
-    <div class="container" style="margin-top:20px;color:#777">© 2025 AURORA BAGS</div>
   </footer>
 
-  <div id="exitMask" class="exit-mask" role="dialog" aria-modal="true" aria-labelledby="exitTitle" aria-hidden="true">
-    <div class="exit-modal">
-      <div class="exit-head">
-        <strong id="exitTitle">Before you go</strong>
-        <button class="btn small ghost" onclick="dismissExit(true)" aria-label="Close">Close</button>
-      </div>
-      <div class="exit-body">
-        <div class="exit-grid">
-          <div>
-            <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=1600&q=80&auto=format&fit=crop" alt="Talk to us">
-          </div>
-          <div>
-            <h3 style="margin-top:0">Questions about sizing, colors or shipping?</h3>
-            <p class="muted">Chat with us on WhatsApp. We usually reply within minutes.</p>
-            <div style="display:flex;gap:10px;margin:12px 0">
-              <button class="btn" onclick="exitToWhatsApp()">Chat on WhatsApp</button>
-              <button class="btn ghost" onclick="dismissExit()">Maybe later</button>
-            </div>
-            <div class="muted" style="font-size:12px">You can also reach us via the floating WhatsApp button.</div>
-          </div>
-        </div>
-      </div>
-      <div class="exit-foot">
-        <label style="display:flex;align-items:center;gap:8px;font-size:13px;color:#666">
-          <input id="exitNoMore" type="checkbox"> Don’t show again
-        </label>
-      </div>
-    </div>
-  </div>
-
   <div class="floating">
-    <button class="float-btn" onclick="openWhatsApp('Hi, I\\'m interested in your bags.', 'floating')" title="WhatsApp">WA</button>
-    <button class="float-btn to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">↑</button>
+    <div class="float-btn" onclick="openWhatsApp('Hi, I would like to ask about a bag.', 'float')">WA</div>
+    <div class="float-btn to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
   </div>
 
-  <script>
-    // Config
-    const WA_NUMBER = "447349050019"; // without +
-  </script>
+  <!-- Detail Modal Container -->
+  <div class="exit-mask" id="exit-mask" aria-hidden="true"></div>
+
+  <!-- Exit-Intent Promo Modal -->
+  <div class="promo-mask" id="promo-mask" aria-hidden="true"></div>
 
   <script>
-    // 恢复你的完整产品数据（20 个）
-    window.__PRODUCTS_DATA = {
-      products: [
-        { id: 1, slug: "city-tote", name: "Hermès So Rainy Days Fubao Leather Handbag", tag: "Commute",
-          images: ["https://res.cloudinary.com/dklyp8vud/image/upload/v1760432594/6_dosbrk.jpg"],
-          thumb: "https://res.cloudinary.com/dklyp8vud/image/upload/v1760432594/6_dosbrk.jpg",
-          summary: "Featherlight capacity, magnetic access, 13” laptop fits.",
-          description: "Top-grain leather tote designed for urban commute.",
-          specs: ["Top-grain leather","Magnetic closure","Fits 13” laptop"],
-          keywords: ["tote","commute","laptop","magnetic","leather"]
-        },
-        { id: 2, slug: "mini-crossbody", name: "Hermès So First Snow Fubao Leather Handbag", tag: "Evening",
-          images: ["https://res.cloudinary.com/dklyp8vud/image/upload/v1760432593/5_eunwf6.jpg"],
-          thumb: "https://res.cloudinary.com/dklyp8vud/image/upload/v1760432593/5_eunwf6.jpg",
-          summary: "Adorable silhouette with refined chain strap.",
-          description: "Compact statement piece for evenings and city strolls.",
-          specs: ["Adjustable chain strap","Smooth zipper","Premium lining"],
-          keywords: ["mini","crossbody","evening","chain","compact"]
-        },
-        { id: 3, slug: "midnight-faubourg-birkin-20", name: "Hermès So Black Midnight Fubao Leather Handbag", tag: "Evening",
-          images: ["https://res.cloudinary.com/dklyp8vud/image/upload/v1760432592/4_ppur9v.jpg"],
-          thumb: "https://res.cloudinary.com/dklyp8vud/image/upload/v1760432592/4_ppur9v.jpg",
-          summary: "Smart compartments for short trips.",
-          description: "Durable travel bag with reinforced base.",
-          specs: ["Reinforced base","Shoe pocket","Trolley sleeve"],
-          keywords: ["travel","weekend","duffel","organizer"]
-        },
-        { id: 4, slug: "metro-backpack", name: "Hermès So Sunset Glow Fubao Leather Handbag", tag: "Commute",
-          images: ["https://res.cloudinary.com/dklyp8vud/image/upload/v1760432592/3_ikrbu7.jpg"],
-          thumb: "https://res.cloudinary.com/dklyp8vud/image/upload/v1760432592/3_ikrbu7.jpg",
-          summary: "Slim profile with padded laptop sleeve.",
-          description: "Minimal city backpack with breathable straps.",
-          specs: ["16” laptop sleeve","Water-repellent","Quick pocket"],
-          keywords: ["backpack","commute","laptop","minimal"]
-        },
-        { id: 5, slug: "studio-satchel", name: "Hermès So Rainy Days Fubao Leather Handbag", tag: "Commute",
-          images: ["https://res.cloudinary.com/dklyp8vud/image/upload/v1760432592/2_q3cdfh.jpg"],
-          thumb: "https://res.cloudinary.com/dklyp8vud/image/upload/v1760432592/2_q3cdfh.jpg",
-          summary: "Classic silhouette with modern hardware.",
-          description: "Structured satchel for work and meetings.",
-          specs: ["Magnetic flap","Organizer panel","Shoulder strap"],
-          keywords: ["satchel","work","classic","organizer"]
-        },
-        { id: 6, slug: "soho-shoulder", name: "Hermès So Dayday BrownHouse Day Fubao Leather Handbag", tag: "Evening",
-          images: ["https://res.cloudinary.com/dklyp8vud/image/upload/v1760432592/1_vaqrwm.jpg"],
-          thumb: "https://res.cloudinary.com/dklyp8vud/image/upload/v1760432592/1_vaqrwm.jpg",
-          summary: "Curved form with soft touch.",
-          description: "Elegant shoulder bag for daily chic.",
-          specs: ["Soft-touch body","Metal accents","Adjustable strap"],
-          keywords: ["shoulder","evening","soft","elegant"]
-        },
-        { id: 7, slug: "clutch-luxe", name: "Platinum BirKin25 togo leather touch crocodile", tag: "Evening",
-          images: ["https://res.cloudinary.com/dklyp8vud/image/upload/v1760432628/wsxc1757870686510_0_b5uxla.jpg"],
-          thumb: "https://res.cloudinary.com/dklyp8vud/image/upload/v1760432628/wsxc1757870686510_0_b5uxla.jpg",
-          summary: "Statement piece for nights out.",
-          description: "Compact clutch with magnetic closure.",
-          specs: ["Detachable wristlet","Inner pocket","Magnetic"],
-          keywords: ["clutch","evening","party","compact"]
-        },
-        { id: 8, slug: "kelly-pochette-22", name: "Kelly pochette 22", tag: "Travel",
-          images: ["https://res.cloudinary.com/dklyp8vud/image/upload/v1760435232/IMG_E4456_ejgb1t.jpg"],
-          thumb: "https://res.cloudinary.com/dklyp8vud/image/upload/v1760435232/IMG_E4456_ejgb1t.jpg",
-          summary: "Carry-on roller for effortless trips.",
-          description: "Hard-wearing shell with smooth wheels.",
-          specs: ["Carry-on size","360° wheels","TSA lock"],
-          keywords: ["roller","travel","carry-on","wheels"]
-        },
-        { id: 9, slug: "convert-duffel", name: "Platinum BirKin25 togo leather", tag: "Travel",
-          images: ["https://res.cloudinary.com/dklyp8vud/image/upload/v1760447841/IMG_E5724_l4nvjs.jpg"],
-          thumb: "https://res.cloudinary.com/dklyp8vud/image/upload/v1760447841/IMG_E5724_l4nvjs.jpg",
-          summary: "Duffel that converts to backpack.",
-          description: "Versatile carry for gym and trips.",
-          specs: ["Stowable straps","Wet pocket","Reinforced base"],
-          keywords: ["duffel","convertible","gym","travel"]
-        },
-        { id: 10, slug: "lindy-19-tc", name: "Lindy 19 TC", tag: "Commute",
-          images: ["https://res.cloudinary.com/dklyp8vud/image/upload/v1760447916/wsxc1757865219675_2_woayeu.jpg"],
-          thumb: "https://res.cloudinary.com/dklyp8vud/image/upload/v1760447916/wsxc1757865219675_2_woayeu.jpg",
-          summary: "Casual messenger with padded sleeve.",
-          description: "Sturdy canvas for daily carry.",
-          specs: ["13” sleeve","Magnetic flap","Organizer"],
-          keywords: ["messenger","canvas","commute","casual"]
-        },
-        { id: 11, slug: "Chanel ", name: "Chanel Classic Box Flap Bag in Black with Gold-Tone Hardware", tag: "Evening",
-          images: ["https://res.cloudinary.com/dklyp8vud/image/upload/v1760523203/38e01bb1_cslgpr.jpg"],
-          thumb: "https://res.cloudinary.com/dklyp8vud/image/upload/v1760523203/38e01bb1_cslgpr.jpg",
-          summary: "Soft silhouette with effortless charm.",
-          description: "Supple leather with roomy interior and magnetic top.",
-          specs: ["Soft-grain leather","Inner zip pocket","Magnetic top"],
-          keywords: ["hobo","leather","evening","soft"]
-        },
-        { id: 12, slug: "Chanel classic", name: "Chanel classic", tag: "Commute",
-          images: ["https://res.cloudinary.com/dklyp8vud/image/upload/v1760523198/6057d2ea_wwyceo.jpg"],
-          thumb: "https://res.cloudinary.com/dklyp8vud/image/upload/v1760523198/6057d2ea_wwyceo.jpg",
-          summary: "Slim, organized, professional.",
-          description: "A minimal brief with 14” sleeve and quick-access pocket.",
-          specs: ["14” sleeve","Quick-access","Detachable strap"],
-          keywords: ["brief","commute","work","minimal"]
-        },
-        { id: 13, slug: "Kelly25", name: "Kelly25 crocodile leather", tag: "Travel",
-          images: ["https://res.cloudinary.com/dklyp8vud/image/upload/v1760525674/wsxc1757871682457_0_y2xggo.jpg"],
-          thumb: "https://res.cloudinary.com/dklyp8vud/image/upload/v1760525674/wsxc1757871682457_0_y2xggo.jpg",
-          summary: "Made of crocodile leather, this bag is expensive due to its rare material, exquisite craftsmanship and unique design, making it a high-end collector's item.",
-          description: "Durable canvas body with leather handles.",
-          specs: ["Canvas + leather","Trolley sleeve","Shoe pocket"],
-          keywords: ["weekender","travel","canvas","leather"]
-        },
-        { id: 14, slug: "Kelly28", name: "Kelly28 crocodile leather", tag: "Evening",
-          images: ["https://res.cloudinary.com/dklyp8vud/image/upload/v1760526073/wsxc1757872242183_0_qfkosx.jpg"],
-          thumb: "https://res.cloudinary.com/dklyp8vud/image/upload/v1760526073/wsxc1757872242183_0_qfkosx.jpg",
-          summary: "The 28cm crocodile leather Kelly bag is a luxury product because crocodile leather is a rare and expensive leather.",
-          description: "The 28cm crocodile leather Kelly bag is a luxury product because crocodile leather is a rare and expensive leather..",
-          specs: ["Hidden magnets","Metal frame","Wristlet"],
-          keywords: ["clutch","evening","box","metal"]
-        },
-        { id: 15, slug: "Kelly25", name: "Kelly25 Epson leather outer seam", tag: "Commute",
-          images: ["https://res.cloudinary.com/dklyp8vud/image/upload/v1760526351/wsxc1757855075179_0_hpwgua.jpg"],
-          thumb: "https://res.cloudinary.com/dklyp8vud/image/upload/v1760526351/wsxc1757855075179_0_hpwgua.jpg",
-          summary: "The product size is 25 cm, made of Epsom leather, and has an inner seam. This bag is famous for its exquisite craftsmanship and high-quality materials. It is a classic Hermès style.",
-          description: "All-day tote for groceries, books, and more.",
-          specs: ["Heavy canvas","Inner pocket","Shoulder handles"],
-          keywords: ["tote","canvas","commute","daily"]
-        },
-        { id: 16, slug: "Kelly25", name: "kelly 25 Epsom leather inseam", tag: "Evening",
-          images: ["https://res.cloudinary.com/dklyp8vud/image/upload/v1760526539/IMG_6346_vrvm1h.jpg"],
-          thumb: "https://res.cloudinary.com/dklyp8vud/image/upload/v1760526539/IMG_6346_vrvm1h.jpg",
-          summary: "The product size is 25 cm, made of Epsom leather, and has an inner seam. This bag is famous for its exquisite craftsmanship and high-quality materials. It is a classic Hermès style.",
-          description: "Perfect for essentials with an adjustable strap.",
-          specs: ["Adjustable strap","Hidden pocket","Magnetic flap"],
-          keywords: ["mini","saddle","evening","compact"]
-        },
-        { id: 17, slug: "Kelly28", name: "Kelly28 Epson leather outer seam", tag: "Travel",
-          images: ["https://res.cloudinary.com/dklyp8vud/image/upload/v1760526631/wsxc1757854426809_2_sjtzvn.jpg"],
-          thumb: "https://res.cloudinary.com/dklyp8vud/image/upload/v1760526631/wsxc1757854426809_2_sjtzvn.jpg",
-          summary: "28cm Hermès Kelly bag in Epsom leather with a Sellier design",
-          description: "28cm Hermès Kelly bag in Epsom leather with a Sellier design.",
-          specs: ["28cm Hermès Kelly bag in Epsom leather with a Sellier design"],
-          keywords: ["roller","travel","luggage","24"]
-        },
-        { id: 18, slug: "Kelly mini", name: " Kelly19 Epson leather", tag: "Commute",
-          images: ["https://res.cloudinary.com/dklyp8vud/image/upload/v1760526777/wsxc1757859279193_2_zqf9tq.jpg"],
-          thumb: "https://res.cloudinary.com/dklyp8vud/image/upload/v1760526777/wsxc1757859279193_2_zqf9tq.jpg",
-          summary: "Lightweight and weather-friendly.",
-          description: "Everyday crossbody with quick-access front pocket.",
-          specs: ["Water-repellent","Quick pocket","Adjustable strap"],
-          keywords: ["nylon","crossbody","commute","lightweight"]
-        },
-        { id: 19, slug: "Kelly pochette 22", name: "Kelly pochette 22 Epsom leather", tag: "Commute",
-          images: ["https://res.cloudinary.com/dklyp8vud/image/upload/v1760526921/wsxc1757860617816_0_sqkic2.jpg"],
-          thumb: "https://res.cloudinary.com/dklyp8vud/image/upload/v1760526921/wsxc1757860617816_0_sqkic2.jpg",
-          summary: "Time-worn look, modern interior.",
-          description: "Organized compartments and padded sleeve.",
-          specs: ["22” sleeve","Organizer panel","Magnetic closure"],
-          keywords: ["messenger","leather","commute","vintage"]
-        },
-        { id: 20, slug: "Constance19", name: "Kangkang Constance19 Epson leather", tag: "Travel",
-          images: ["https://res.cloudinary.com/dklyp8vud/image/upload/v1760527014/wsxc1757859663715_2_zscnpk.jpg"],
-          thumb: "https://res.cloudinary.com/dklyp8vud/image/upload/v1760527014/wsxc1757859663715_2_zscnpk.jpg",
-          summary: "Day trips and city walks made easy.",
-          description: "Compact backpack with breathable straps.",
-          specs: ["Breathable straps","Side pockets","Light frame"],
-          keywords: ["backpack","daypack","travel","compact"]
-        }
-      ]
-    };
-  </script>
+    // WhatsApp numbers and timed rotation
+    const NUMBERS = ["8617807741567","447759820876","447349050019"];
+    const PHONE_ROTATE_MS = 5000; // 10s per number
+    let currentNumberIndex = 0;
+    let phoneTimer = null;
 
-  <script>
-    // 兜底 openWhatsApp（如已存在则不覆盖）
-    (function(){
-      if (typeof window.openWhatsApp !== "function") {
-        window.openWhatsApp = function(message, source){
-          if (window.ttq && typeof ttq.track === "function") {
-            ttq.track('Contact', { method: 'WhatsApp', source });
-          }
-          const url = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(message + (source ? ' ['+source+']' : ''));
-          window.open(url, "_blank", "noopener");
-        };
-      }
-    })();
-  </script>
-
-  <script>
-    // 核心逻辑（与你原来一致）+ 新增的空白点击/搜索回车
-    const getProducts = () => window.__PRODUCTS_DATA.products;
-
-    // 如果页面没定义 openWhatsApp，则使用备选实现
-    const _openWhatsApp_impl = (message, source = 'button') => {
-      if (window.ttq && typeof ttq.track === "function") {
-        ttq.track('Contact', { method: 'WhatsApp', source });
-      }
-      const url = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(message)}`;
-      window.open(url, "_blank");
-    };
-    if (typeof window.openWhatsApp !== "function") {
-      window.openWhatsApp = _openWhatsApp_impl;
+    function startPhoneRotation(){
+      stopPhoneRotation();
+      phoneTimer = setInterval(()=>{
+        currentNumberIndex = (currentNumberIndex + 1) % NUMBERS.length;
+        updateWaLabel();
+      }, PHONE_ROTATE_MS);
+    }
+    function stopPhoneRotation(){
+      if (phoneTimer) { clearInterval(phoneTimer); phoneTimer = null; }
+    }
+    function getCurrentPhone(){ return NUMBERS[currentNumberIndex]; }
+    function updateWaLabel(){
+      const el = document.getElementById('wa-current-label');
+      if (!el) return;
+      el.textContent = `→ +${getCurrentPhone()}`;
     }
 
-    const state = { filter: "all", query: "" };
+    // Products (same as before)
+    const PRODUCTS = [
+      { id: 201, slug: "hermes", name: "Hermes BirKin25 togo leather", tag: "Hermes", img: "https://res.cloudinary.com/dxatkiuow/image/upload/v1763540168/IMG_E5733_w8pujn.jpg",
+        images: ["https://res.cloudinary.com/dxatkiuow/image/upload/v1763540186/IMG_E5724_jqnlwq.jpg","https://res.cloudinary.com/dxatkiuow/image/upload/v1763540188/IMG_E5848_srucrb.jpg"] },
+      { id: 202, slug: "hermes", name: "Hermes BirKin25 togo leather touch crocodile", tag: "Hermes", img: "https://res.cloudinary.com/dxatkiuow/image/upload/v1763540437/wsxc1757868897854_2_csoqkc.jpg",
+        images: ["https://res.cloudinary.com/dxatkiuow/image/upload/v1763540437/wsxc1757868889523_2_blfovq.jpg","https://res.cloudinary.com/dxatkiuow/image/upload/v1763540438/wsxc1757868835375_7_txcird.jpg"] },
+      { id: 203, slug: "hermes", name: "BirKin25 togo leather touch crocodile2", tag: "Hermes", img: "https://res.cloudinary.com/dxatkiuow/image/upload/v1763540572/wsxc1757862926952_8_lyk4tx.jpg",
+        images: ["https://res.cloudinary.com/dxatkiuow/image/upload/v1763540572/wsxc1757862945635_8_clwm2z.jpg","https://res.cloudinary.com/dxatkiuow/image/upload/v1763540572/wsxc1757862896133_2_q14psc.jpg"] },
+      { id: 204, slug: "hermes", name: "Hermes BirKin30 crocodile leather", tag: "Hermes", img: "https://res.cloudinary.com/dxatkiuow/image/upload/v1763541262/wsxc1757863395165_2_wn7drr.jpg",
+        images: ["https://res.cloudinary.com/dxatkiuow/image/upload/v1763541262/wsxc1757863441772_2_omkoiu.jpg","https://res.cloudinary.com/dxatkiuow/image/upload/v1763541262/wsxc1757863458178_2_tr4z9v.jpg"] },
+      { id: 205, slug: "hermes-house", name: "Hermes House during the day", tag: "Hermes", img: "https://res.cloudinary.com/dxatkiuow/image/upload/v1763541505/1_ie0apl.jpg",
+        images: ["https://res.cloudinary.com/dxatkiuow/image/upload/v1763541512/IMG_E4479_mfbchk.jpg","https://res.cloudinary.com/dxatkiuow/image/upload/v1763541512/IMG_E4479_mfbchk.jpg"] },
 
-    const productCard = (p) => {
-      const msg = `Hi, I\\'m interested in: ${p.name}`;
+      { id: 206, slug: "Gray House Rainy Days", name: "Hermes RainyDays", tag: "Hermes", img: "https://res.cloudinary.com/dxatkiuow/image/upload/v1763541505/2_zgiscm.jpg",
+        images: ["https://res.cloudinary.com/dxatkiuow/image/upload/v1763541511/IMG_E4477_byb1je.jpg","https://res.cloudinary.com/dxatkiuow/image/upload/v1763541511/IMG_E4477_byb1je.jpg"] },
+      { id: 207, slug: "Hermes-White HouseSous La Neige", name: "Hermes First Snow", tag: "Hermes", img: "https://res.cloudinary.com/dxatkiuow/image/upload/v1763541507/5_tiedrc.jpg",
+        images: ["https://res.cloudinary.com/dxatkiuow/image/upload/v1763541507/5_tiedrc.jpg","https://res.cloudinary.com/dxatkiuow/image/upload/v1763541512/IMG_E4476_gtmomf.jpg"] },
+      { id: 208, slug: "Hermes-Black HouseMidnight", name: "Hermes Midnight", tag: "Hermes", img: "https://res.cloudinary.com/dxatkiuow/image/upload/v1763541506/4_j6arau.jpg",
+        images: ["https://res.cloudinary.com/dxatkiuow/image/upload/v1763541506/4_j6arau.jpg","https://res.cloudinary.com/dxatkiuow/image/upload/v1763541511/IMG_E4478_e8ug2x.jpg"] },
+      { id: 209, slug: "Hermes-Kelly25 Verona Green", name: "Kelly25 Epson leather", tag: "Hermes", img: "https://res.cloudinary.com/dxatkiuow/image/upload/v1763542183/wsxc1757855453750_0_unzttg.jpg",
+        images: ["https://res.cloudinary.com/dxatkiuow/image/upload/v1763542183/wsxc1757855460811_0_dnk63k.jpg","https://res.cloudinary.com/dxatkiuow/image/upload/v1763542183/wsxc1757855453750_0_unzttg.jpg"] },
+      { id: 210, slug: "Hermes-Kelly25 Milkshake White", name: "Kelly25 Epson leather", tag: "Hermes", img: "https://res.cloudinary.com/dxatkiuow/image/upload/v1763542184/wsxc1757855075179_0_zpwsfj.jpg",
+        images: ["https://res.cloudinary.com/dxatkiuow/image/upload/v1763542185/wsxc1757855079455_0_fasrsk.jpg","https://res.cloudinary.com/dxatkiuow/image/upload/v1763542184/wsxc1757855075179_0_zpwsfj.jpg"] },
+
+      { id: 211, slug: "Hermès Kelly 25 Heart Red", name: "Kelly25 Epson leathe", tag: "Hermes", img: "https://res.cloudinary.com/dxatkiuow/image/upload/v1763542184/wsxc1757855597695_2_r6ihjz.jpg",
+        images: ["https://res.cloudinary.com/dxatkiuow/image/upload/v1763542185/wsxc1757855593175_2_qeooyr.jpg","https://res.cloudinary.com/dxatkiuow/image/upload/v1763542184/wsxc1757855597695_2_r6ihjz.jpg"] },
+      { id: 212, slug: "Hermès Kelly 25 Elephant Grey", name: "Kelly25 Epson leathe", tag: "Hermes", img: "https://res.cloudinary.com/dxatkiuow/image/upload/v1763542185/wsxc1757855195639_0_lejtan.jpg",
+        images: ["https://res.cloudinary.com/dxatkiuow/image/upload/v1763542185/wsxc1757855195639_0_lejtan.jpg","https://res.cloudinary.com/dxatkiuow/image/upload/v1763542185/wsxc1757855182086_0_eoesgg.jpg"] },
+      { id: 213, slug: "chanel-mini", name: "Chanel Evening Mini", tag: "Chanel", img: "https://res.cloudinary.com/dxatkiuow/image/upload/v1763543768/img_8dfae854_20250317_i1742197798217_7875_0_0.jpg_sqrev7.jpg",
+        images: ["https://res.cloudinary.com/dxatkiuow/image/upload/v1763543768/img_8dfae854_20250317_i1742197800597_5745_0_7.jpg_pcusku.jpg","https://res.cloudinary.com/dxatkiuow/image/upload/v1763543768/img_8dfae854_20250317_i1742197798146_7248_0_1.jpg_fwf1sk.jpg"] },
+      { id: 214, slug: "LV Milky Way ", name: "LV Milky Way ", tag: "LV", img: "https://res.cloudinary.com/dxatkiuow/image/upload/v1763544534/img_63752abd_20241222_a1734853242526_8635.jpg_prdaij.jpg",
+        images: ["https://res.cloudinary.com/dxatkiuow/image/upload/v1763544536/img_63752abd_20241222_a1734853242447_3631.jpg_qjxnoj.jpg","https://res.cloudinary.com/dxatkiuow/image/upload/v1763544535/img_63752abd_20241222_a1734853244528_0573.jpg_xiexpg.jpg"] },
+      { id: 215, slug: "LV M44151 Navy Blue", name: "LV M44151 Navy Blue", tag: "LV", img: "https://res.cloudinary.com/dxatkiuow/image/upload/v1763543908/img_778665c2_20250710_a1752102976874_2363.jpg_kimfkj.jpg",
+        images: ["https://res.cloudinary.com/dxatkiuow/image/upload/v1763543909/img_778665c2_20250710_a1752102977707_0562.jpg_vwcvtz.jpg","https://res.cloudinary.com/dxatkiuow/image/upload/v1763543908/img_778665c2_20250710_a1752102978538_6038.jpg_wely0p.jpg"] },
+
+      { id: 216, slug: "LV M57458 VANITY", name: "LV M57458 VANITY", tag: "LV", img: "https://res.cloudinary.com/dxatkiuow/image/upload/v1763544073/img_778665c2_20250710_a1752103039547_6507.jpg_zejjbd.jpg",
+        images: ["https://res.cloudinary.com/dxatkiuow/image/upload/v1763544073/img_778665c2_20250710_a1752103039529_3382.jpg_qmrbbh.jpg","https://res.cloudinary.com/dxatkiuow/image/upload/v1763544074/img_778665c2_20250710_a1752103040539_6043.jpg_snvix0.jpg"] },
+      { id: 217, slug: "lv-M24186twist Nicolas Ghesquière", name: "LV M24186twist Nicolas Ghesquière", tag: "LV", img: "https://res.cloudinary.com/dxatkiuow/image/upload/v1763544204/img_778665c2_20250703_a1751540230627_5042.jpg_ebpits.jpg",
+        images: ["https://res.cloudinary.com/dxatkiuow/image/upload/v1763544205/img_778665c2_20250703_a1751540230361_3554.jpg_nxill9.jpg","https://res.cloudinary.com/dxatkiuow/image/upload/v1763544206/img_778665c2_20250703_a1751540230283_7254.jpg_v5bx8w.jpg"] },
+      { id: 218, slug: "chanel-soir", name: "Chanel Soir Clutch", tag: "Chanel", img: "https://res.cloudinary.com/dxatkiuow/image/upload/v1763544367/i1744238510_7057_0_o3sh1t.jpg",
+        images: ["https://res.cloudinary.com/dxatkiuow/image/upload/v1763544375/20250410_i1744238510_3800_5.jpg_cu14h5.jpg","https://res.cloudinary.com/dxatkiuow/image/upload/v1763544378/20250410_i1744238510_379_1.jpg_rgahlo.jpg"] },
+      { id: 219, slug: "Chanel Classic Model", name: "Chanel Classic Model", tag: "Chanel", img: "https://res.cloudinary.com/dxatkiuow/image/upload/v1763544737/img_d8357bf6_20250411_i1744373736894_5410_0_0.jpg_rvggtu.jpg",
+        images: ["https://res.cloudinary.com/dxatkiuow/image/upload/v1763544792/img_d8357bf6_20250411_i1744373736894_7877_0_2.jpg_mc3bxg.jpg","https://res.cloudinary.com/dxatkiuow/image/upload/v1763544852/img_d8357bf6_20250411_i1744373736894_8170_0_8.jpg_vi984t.jpg"] },
+      { id: 220, slug: "Chanel Classic Model: 1112", name: "Chanel Classic Model: 1112", tag: "Chanel", img: "https://res.cloudinary.com/dxatkiuow/image/upload/v1763544855/20220906_i1662441635_1311_0.jpg_ojabco.jpg",
+        images: ["https://res.cloudinary.com/dxatkiuow/image/upload/v1763544856/20220906_i1662441635_5739_5.jpg_fpvdnn.jpg","https://res.cloudinary.com/dxatkiuow/image/upload/v1763544857/20220906_i1662441635_2717_3.jpg_fezvu5.jpg"] }
+    ];
+
+    const FALLBACKS = [
+      "https://res.cloudinary.com/dklyp8vud/image/upload/v1760435232/IMG_E4456_ejgb1t.jpg",
+      "https://res.cloudinary.com/dklyp8vud/image/upload/v1760447841/IMG_E5724_l4nvjs.jpg",
+      "https://res.cloudinary.com/dklyp8vud/image/upload/v1760526539/IMG_6346_vrvm1h.jpg"
+    ];
+
+    // English UI strings only
+    const T = {
+      whatsapp: "WhatsApp",
+      details: "Details",
+      close: "Close",
+      promoTitle: "Special Offer",
+      promoDesc: "Click to contact and enjoy Black Friday 30% OFF",
+      promoNote: "Limited-time Black Friday. Contact now to see details and stock status.",
+      promoAction: "Chat now",
+      promoClose: "Maybe later"
+    };
+
+    // ripple support
+    document.addEventListener('click', e => { window._lastClickEvent = e; }, true);
+
+    function trackContact(source){
+      if (window.ttq && typeof ttq.track === "function") {
+        ttq.track('Contact', { method: 'WhatsApp', source: source || 'unknown', number: getCurrentPhone() });
+      }
+    }
+
+    function openWhatsApp(message, source){
+      try{
+        const phone = getCurrentPhone();
+        const text = encodeURIComponent(message);
+        const url = `https://wa.me/${phone}?text=${text}`;
+        trackContact(source);
+        window.open(url, "_blank");
+      }catch(err){ console.error(err); }
+    }
+
+    function scrollToSection(id){
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({behavior:'smooth', block:'start'});
+    }
+
+    let currentFilter = 'all';
+    let currentQuery = '';
+
+    function setFilter(tag){
+      currentFilter = tag;
+      document.querySelectorAll('.chip').forEach(c => c.classList.toggle('active', c.dataset.filter === tag));
+      render();
+    }
+
+    function getFiltered(){
+      const list = PRODUCTS.filter(p => currentFilter === 'all' ? true : p.tag === currentFilter);
+      if (!currentQuery) return list;
+      const q = currentQuery;
+      return list.filter(p => p.name.toLowerCase().includes(q) || (p.slug||'').toLowerCase().includes(q));
+    }
+
+    function imgAttrs(){
+      return `referrerpolicy="no-referrer" crossorigin="anonymous" decoding="async" loading="lazy"`;
+    }
+
+    function enableClearableSearch(){
+      const el = document.getElementById('search');
+      const wrapper = el.parentElement;
+      const clearBtn = document.createElement('button');
+      clearBtn.textContent = '✕';
+      clearBtn.setAttribute('aria-label','Clear');
+      clearBtn.className = 'icon-btn';
+      clearBtn.style.padding='8px 10px';
+      clearBtn.onclick = () => { el.value=''; currentQuery=''; render(); };
+      wrapper.appendChild(clearBtn);
+    }
+
+    function cardTemplate(p, index, from){
+      const tag = `[${p.slug || 'no-slug'} | #${p.id}]`;
+      const msg = `Hi, I'm interested in: ${p.name} ${tag}`;
+      const onImgClick = `
+        (function(el){
+          try{
+            var r = el.getBoundingClientRect();
+            var e = window._lastClickEvent;
+            if(e){
+              el.style.setProperty('--ripple-x', (e.clientX - r.left) + 'px');
+              el.style.setProperty('--ripple-y', (e.clientY - r.top) + 'px');
+            }
+            el.classList.remove('is-rippling'); void el.offsetWidth; el.classList.add('is-rippling');
+          }catch(err){}
+          openWhatsApp('${msg.replace(/'/g, "\\'")}', '${from}-image');
+        })(this)
+      `;
       return `
         <div class="card">
           <div class="card-media">
-            <span class="card-badge badge">${p.tag}</span>
-            <img src="${p.thumb}" alt="${p.name} product photo" loading="lazy">
+            <a class="tap" onclick="${onImgClick}">
+              <img src="${p.img}"
+                   alt="${(p.name || 'Product').replace(/"/g,'&quot;')}"
+                   ${imgAttrs()}
+                   onerror="this.onerror=null;this.src='${FALLBACKS[index % FALLBACKS.length]}';">
+            </a>
+            <div class="card-badge"><span class="badge">${p.tag}</span></div>
           </div>
           <div class="card-body">
-            <div class="title">${p.name}</div>
-            <div class="muted" style="margin:6px 0">${p.summary}</div>
-            <div style="display:flex;gap:10px;margin-top:10px">
-              <button class="btn small" onclick="openWhatsApp('${msg}', 'card')">WhatsApp inquiry</button>
-              <a class="btn small ghost" href="#catalog" onclick="viewDetail(${p.id})">Details</a>
+            <div class="title" style="font-size:15px;line-height:1.3">${p.name}</div>
+            <div class="muted" style="font-size:12px;margin:4px 0 10px">${tag}</div>
+            <div class="mobile-actions" style="display:grid;grid-template-columns:1fr;gap:8px">
+              <button class="btn small" style="width:100%" onclick="openWhatsApp('${msg.replace(/'/g, "\\'")}', '${from}-button')">${T.whatsapp}</button>
+              <button class="btn small ghost" style="width:100%" onclick="viewDetail(${p.id})">${T.details}</button>
             </div>
           </div>
         </div>
       `;
-    };
+    }
 
-    const renderGrid = () => {
-      const listEl = document.getElementById("grid");
-      const hotEl = document.getElementById("grid-hot");
-      const q = state.query.trim().toLowerCase();
-      const list = getProducts().filter(p => {
-        const matchFilter = state.filter === "all" ? true : p.tag === state.filter;
-        const matchQuery = !q ? true : (
-          (p.name || '').toLowerCase().includes(q) ||
-          (p.tag || '').toLowerCase().includes(q) ||
-          (p.summary || '').toLowerCase().includes(q) ||
-          (p.keywords || []).some(k => (k || '').toLowerCase().includes(q))
-        );
-        return matchFilter && matchQuery;
-      });
-      if (listEl) listEl.innerHTML = list.map(productCard).join("");
-      const hot = getProducts().slice(0, Math.min(12, getProducts().length));
-      if (hotEl) hotEl.innerHTML = hot.map(productCard).join("");
-    };
+    function render(){
+      const data = getFiltered();
+      document.getElementById('grid').innerHTML = data.map((p,i)=>cardTemplate(p,i,'list')).join('');
+    }
 
-    const viewDetail = (id) => {
-      const p = getProducts().find(x => x.id === id);
+    function viewDetail(id){
+      const p = PRODUCTS.find(x=>x.id===id);
       if(!p) return;
+      const tag = `[${p.slug || 'no-slug'} | #${p.id}]`;
+      const msg = `Hi, I'm interested in: ${p.name} ${tag}`;
+      const imgs = (p.images && p.images.length ? p.images : [p.img]).filter(Boolean);
 
-      if (window.ttq && typeof ttq.track === "function") {
-        ttq.track('ViewContent', {
-          content_type: 'product',
-          content_name: p.name || '',
-          content_id: p.slug || String(p.id)
-        });
-      }
+      const grid = imgs.map((src, i) => `
+        <a class="tap" onclick="(function(el){
+          try{
+            var r = el.getBoundingClientRect(); var e = window._lastClickEvent;
+            if(e){ el.style.setProperty('--ripple-x', (e.clientX - r.left) + 'px'); el.style.setProperty('--ripple-y', (e.clientY - r.top) + 'px');}
+            el.classList.remove('is-rippling'); void el.offsetWidth; el.classList.add('is-rippling');
+          }catch(err){}
+          openWhatsApp('${msg.replace(/'/g, "\\'")}', 'detail-image');
+        })(this)">
+          <img src="${src}"
+               alt="${(p.name || 'Product').replace(/"/g,'&quot;')}"
+               ${imgAttrs()}
+               onerror="this.onerror=null;this.src='${FALLBACKS[i % FALLBACKS.length]}';">
+        </a>
+      `).join('');
 
-      const msg = `Hi, I\\'m interested in: ${p.name}`;
       const html = `
-        <div class="container" style="padding:20px">
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
-            <div>
-              ${(p.images||[]).map(src => `<img src="${src}" alt="${p.name} detail image" style="border-radius:12px;margin-bottom:10px">`).join("")}
+        <div class="exit-modal" role="dialog" aria-modal="true">
+          <div class="exit-head">
+            <div class="title">${p.name}</div>
+            <div style="display:flex;gap:8px;align-items:center">
+              <button class="icon-btn" onclick="hideExit()">✕</button>
             </div>
-            <div>
-              <h2 style="margin-top:0">${p.name || ''}</h2>
-              <div class="badge">${p.tag || ''}</div>
-              <p class="muted" style="margin:10px 0">${p.summary || ''}</p>
-              <p>${p.description || ''}</p>
-              <ul>${(p.specs||[]).map(s=>`<li>${s}</li>`).join("")}</ul>
-              <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px">
-                <button class="btn" onclick="openWhatsApp('${msg}', 'detail')">WhatsApp inquiry</button>
-                <button class="btn ghost" onclick="closeModal()">Close</button>
-              </div>
+          </div>
+          <div class="exit-body">
+            <div class="muted" style="margin:0 0 10px">${tag}</div>
+            <div class="detail-grid">
+              ${grid}
             </div>
+          </div>
+          <div class="exit-footer-fixed">
+            <button class="btn" onclick="openWhatsApp('${msg.replace(/'/g, "\\'")}', 'detail-button')">${T.whatsapp}</button>
+            <button class="btn ghost" onclick="hideExit()">${T.close}</button>
           </div>
         </div>
       `;
-      openModal(html);
-    };
-
-    let modalEl;
-    const openModal = (content) => {
-      if(!modalEl){
-        modalEl = document.createElement("div");
-        modalEl.style.position="fixed";
-        modalEl.style.left="0";
-        modalEl.style.top="0";
-        modalEl.style.right="0";
-        modalEl.style.bottom="0";
-        modalEl.style.background="rgba(0,0,0,.5)";
-        modalEl.style.zIndex="90";
-        modalEl.style.overflow="auto";
-        modalEl.addEventListener("click",(e)=>{ if(e.target===modalEl) closeModal(); });
-        document.body.appendChild(modalEl);
-      }
-      modalEl.innerHTML = `<div style="background:#fff;margin:40px auto;max-width:1000px;border-radius:14px;overflow:hidden">${content}</div>`;
-      modalEl.style.display="block";
-    };
-    const closeModal = () => { if(modalEl) modalEl.style.display="none"; };
-
-    // Exit intent
-    const EXIT_KEY = "aurora_exit_hidden_v1";
-    let exitShown = false;
-    const showExit = () => {
-      if(exitShown) return;
-      if(localStorage.getItem(EXIT_KEY)==="1") return;
-      const mask = document.getElementById("exitMask");
-      if(!mask) return;
-      mask.classList.add("show");
-      mask.setAttribute("aria-hidden","false");
-      exitShown = true;
-    };
-    const dismissExit = (closeForever=false) => {
-      const mask = document.getElementById("exitMask");
-      if(!mask) return;
-      mask.classList.remove("show");
-      mask.setAttribute("aria-hidden","true");
-      if(closeForever || (document.getElementById("exitNoMore") && document.getElementById("exitNoMore").checked)){
-        localStorage.setItem(EXIT_KEY,"1");
-      }
-    };
-    const exitToWhatsApp = () => {
-      const source = "exit-intent";
-      const ts = new Date().toISOString();
-      const url = location.href;
-      const message = `Hi, I\\'d like to chat about your bags. Source: ${source}, Page: ${url}, Time: ${ts}`;
+      showExit(html);
       if (window.ttq && typeof ttq.track === "function") {
-        ttq.track('Contact', { method: 'WhatsApp', source });
+        ttq.track('ViewContent', { content_type:'product', content_name:p.name, content_id:p.slug || String(p.id) });
       }
-      localStorage.setItem(EXIT_KEY, "1");
-      openWhatsApp(message, source);
-      dismissExit(true);
-    };
+    }
 
-    document.addEventListener("mouseout", (e)=>{
-      if(e.clientY <= 0){ showExit(); }
+    function showExit(inner){
+      const mask = document.getElementById('exit-mask');
+      mask.innerHTML = inner;
+      mask.classList.add('show');
+      mask.setAttribute('aria-hidden','false');
+      mask.onclick = (e)=>{ if(e.target===mask) hideExit(); };
+    }
+    function hideExit(){
+      const mask = document.getElementById('exit-mask');
+      mask.classList.remove('show');
+      mask.setAttribute('aria-hidden','true');
+      mask.innerHTML = '';
+    }
+
+    // Exit-intent promo modal (English only)
+    let promoShown = false;
+    let promoCooldown = false;
+    const PROMO_COOLDOWN_MS = 60 * 1000; // 1 min
+    function promoTemplate(){
+      return `
+        <div class="promo" role="dialog" aria-modal="true" aria-label="${T.promoTitle}">
+          <div class="promo-head">
+            <div class="title" style="font-weight:800">${T.promoTitle}</div>
+            <div style="display:flex;gap:8px;align-items:center">
+              <button class="icon-btn" onclick="hidePromo()">✕</button>
+            </div>
+          </div>
+          <div class="promo-body">
+            <div class="promo-title">${T.promoDesc}</div>
+            <div class="promo-desc">${T.promoNote}</div>
+          </div>
+          <div class="promo-actions">
+            <button class="btn" onclick="openWhatsApp('${'Hi, I want to know about Black Friday 30% OFF.'.replace(/'/g, "\\'")}', 'promo')">${T.promoAction}</button>
+            <button class="btn ghost" onclick="hidePromo()">${T.promoClose}</button>
+          </div>
+        </div>
+      `;
+    }
+    function showPromo(){
+      if (promoCooldown) return;
+      const mask = document.getElementById('promo-mask');
+      mask.innerHTML = promoTemplate();
+      mask.classList.add('show');
+      mask.setAttribute('aria-hidden','false');
+      mask.onclick = (e)=>{ if(e.target===mask) hidePromo(); };
+      promoShown = true;
+      promoCooldown = true;
+      setTimeout(()=> promoCooldown = false, PROMO_COOLDOWN_MS);
+    }
+    function hidePromo(){
+      const mask = document.getElementById('promo-mask');
+      mask.classList.remove('show');
+      mask.setAttribute('aria-hidden','true');
+      mask.innerHTML = '';
+    }
+    function setupExitIntent(){
+      // Desktop: mouse leaves to top
+      document.addEventListener('mouseleave', (e)=>{
+        if (e.clientY <= 0 && !promoShown) showPromo();
+      });
+      // Mobile: scroll to top and pause
+      let topTimer;
+      window.addEventListener('scroll', ()=>{
+        clearTimeout(topTimer);
+        topTimer = setTimeout(()=>{
+          if (window.scrollY === 0 && !promoShown) showPromo();
+        }, 300);
+      }, { passive: true });
+    }
+
+    // Search input + TikTok Search event (debounced)
+    const searchEl = document.getElementById('search');
+    let searchDebounce;
+    searchEl.addEventListener('input', (e)=>{
+      currentQuery = (e.target.value || '').trim().toLowerCase();
+      render();
+
+      const q = (e.target.value || '').trim();
+      clearTimeout(searchDebounce);
+      searchDebounce = setTimeout(()=>{
+        if (window.ttq && q.length >= 2) ttq.track('Search', { query: q, content_type: 'product' });
+      }, 350);
     });
-    let bottomTriggered = false;
-    window.addEventListener("scroll", ()=>{
-      if(bottomTriggered) return;
-      const nearBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 10;
-      if(nearBottom){
-        bottomTriggered = true;
-        showExit();
+
+    // Newsletter Subscribe event
+    document.getElementById('subscribeBtn').addEventListener('click', ()=>{
+      if (window.ttq && typeof ttq.track === "function") {
+        ttq.track('Subscribe', { method: 'email' });
       }
-    });
-    document.getElementById("exitMask").addEventListener("click",(e)=>{
-      if(e.target.id==="exitMask"){ dismissExit(); }
+      alert('Subscribed. Thank you!');
     });
 
-    const setFilter = (tag) => {
-      state.filter = tag;
-      document.querySelectorAll(".chip").forEach(el=>{
-        el.classList.toggle("active", el.getAttribute("data-filter")===tag);
-      });
-      renderGrid();
-    };
-    const scrollToSection = (id) => {
-      const el = document.getElementById(id);
-      if(el) el.scrollIntoView({behavior:"smooth"});
-    };
-
-    document.getElementById("search").addEventListener("input", (e)=>{
-      state.query = e.target.value || "";
-      renderGrid();
+    // Init
+    render();
+    enableClearableSearch();
+    updateWaLabel();
+    startPhoneRotation();
+    setupExitIntent();
+    window.addEventListener('visibilitychange', ()=>{
+      // pause rotation in background to sync user-visible timing
+      if (document.hidden) stopPhoneRotation(); else startPhoneRotation();
     });
-
-    renderGrid();
-  </script>
-
-  <script>
-    // 新增：空白点击 -> WhatsApp（弹窗显示时暂停；Esc 可临时跳过一次）[blank]
-    (function(){
-      var skipOnce = false;
-      document.addEventListener('keydown', function(e){
-        if (e.key === 'Escape') skipOnce = true;
-      }, true);
-
-      document.addEventListener('click', function(e){
-        if (skipOnce) { skipOnce = false; return; }
-        var mask = document.getElementById('exitMask');
-        if (mask && mask.classList.contains('show')) return;
-
-        var t = e.target;
-        var INTERACTIVE_TAGS = ['A','BUTTON','INPUT','SELECT','TEXTAREA','LABEL','SUMMARY','DETAILS','VIDEO','AUDIO','IMG'];
-        if (INTERACTIVE_TAGS.includes(t.tagName)) return;
-        if (t.closest('a, button, [onclick], [data-clickable="true"], .card, .chip, header, footer')) return;
-
-        var active = document.activeElement;
-        if (active && ['INPUT','TEXTAREA','SELECT'].includes(active.tagName)) return;
-
-        openWhatsApp("Hi, I'm interested in your bags.", "blank");
-      }, true);
-    })();
-  </script>
-
-  <script>
-    // 新增：搜索框回车 -> WhatsApp（带查询词归因）[search]
-    (function(){
-      var input = document.getElementById('search');
-      if (!input) return;
-      input.addEventListener('keydown', function(e){
-        if (e.key === 'Enter') {
-          var q = (input.value || '').trim();
-          if (q.length) {
-            openWhatsApp("Hi, I'm looking for: " + q, "search");
-          } else {
-            openWhatsApp("Hi, I'm interested in your bags.", "search");
-          }
-        }
-      });
-    })();
   </script>
 </body>
 </html>
