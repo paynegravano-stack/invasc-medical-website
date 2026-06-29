@@ -1,581 +1,463 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en-GB">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>AURORA BAGS · Curated Bags</title>
-  <meta name="description" content="Curated 20 designer-inspired bags. Instant view, search and brand filters.">
-  <style>
-    :root{ --bg:#fff; --text:#1a1a1a; --muted:#666; --soft:#f5f5f5; --brand:#bfa58e; --radius:14px; --shadow:0 8px 24px rgba(0,0,0,.08); --danger:#ef4444; }
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",Arial;-webkit-tap-highlight-color:transparent}
-    a{color:inherit;text-decoration:none}
-    img{max-width:100%;display:block}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Night Everything Changed | Anderson Men's Health</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .serif { font-family: 'Playfair Display', serif; }
+        .gradient-hero { background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%); }
+        .gradient-gold { background: linear-gradient(135deg, #c5a059 0%, #e8c87a 50%, #c5a059 100%); }
+        .text-gold { color: #c5a059; }
+        .border-gold { border-color: #c5a059; }
+        .bg-gold { background-color: #c5a059; }
+        .story-card { transition: all 0.4s ease; }
+        .story-card:hover { transform: translateY(-4px); }
+        .quote-mark { font-family: 'Playfair Display', serif; font-size: 4rem; line-height: 1; color: #c5a059; opacity: 0.3; }
+        .sticky-cta { position: fixed; bottom: 0; left: 0; right: 0; z-index: 50; transform: translateY(100%); transition: transform 0.3s; }
+        .sticky-cta.show { transform: translateY(0); }
+        .fade-in { opacity: 0; transform: translateY(20px); animation: fadeInUp 0.8s ease forwards; }
+        @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+        .story-divider { width: 60px; height: 2px; background: linear-gradient(90deg, #c5a059, transparent); }
 
-    .container{max-width:1200px;margin:0 auto;padding:0 20px}
-    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:12px 18px;border-radius:12px;border:1px solid var(--brand);color:#fff;background:linear-gradient(135deg,var(--brand), #d3a578);font-weight:700;cursor:pointer;transition:transform .15s ease, box-shadow .15s ease;box-shadow:0 6px 18px rgba(191,138,94,.22);touch-action:manipulation}
-    .btn:active{transform:scale(0.98)}
-    .btn.ghost{background:#fff;color:var(--brand);border-color:#fff;box-shadow:none}
-    .btn.dark{background:#111;border-color:#111}
-    .btn.small{padding:10px 12px;font-weight:700}
-    .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:#111;color:#fff;font-size:12px;letter-spacing:.5px}
-
-    header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:saturate(180%) blur(10px);border-bottom:1px solid #eee}
-    .nav{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:60px;padding:8px 0}
-    .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px;letter-spacing:1px}
-    .brand-logo{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--brand), #e6c3a5)}
-    .nav-links{display:flex;gap:18px;flex-wrap:wrap}
-    .nav-links a{color:#333;font-weight:600;opacity:.9}
-    .bar{display:flex;gap:10px;align-items:center;width:100%}
-    .select{border:1px solid #ddd;border-radius:12px;padding:12px 14px;background:#fff;width:100%;font-size:15px}
-    .icon-btn{position:relative;border:1px solid #eee;background:#fff;border-radius:12px;padding:10px 12px;cursor:pointer;display:inline-flex;align-items:center;gap:8px}
-    .count{display:inline-flex;align-items:center;justify-content:center;min-width:24px;height:18px;border-radius:999px;background:#111;color:#fff;font-size:11px;padding:0 6px}
-
-    .topbar{display:flex;gap:10px;align-items:center;justify-content:center;background:#111;color:#fff;min-height:34px;font-size:12px;padding:6px 10px}
-
-    .hero{position:relative;overflow:hidden}
-    .hero-wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center;padding:48px 0}
-    .hero h1{font-size:36px;line-height:1.15;margin:0 0 12px;font-weight:800;letter-spacing:.2px}
-    .hero p{color:var(--muted);font-size:16px;margin:0 0 18px}
-    .hero-card{background:var(--soft);border-radius:var(--radius);padding:16px;display:grid;gap:10px}
-
-    .section{padding:48px 0}
-    .section .head{display:flex;align-items:end;justify-content:space-between;margin-bottom:16px;gap:12px;flex-wrap:wrap}
-    .section .head h2{margin:0;font-size:24px;font-weight:800}
-    .muted{color:var(--muted)}
-
-    .grid{display:grid;gap:14px}
-    .grid.products{grid-template-columns:repeat(4,minmax(0,1fr))}
-    .card{border:1px solid #eee;border-radius:16px;overflow:hidden;background:#fff;transition:transform .15s ease, box-shadow .15s ease}
-    .card-media{aspect-ratio:4/5;background:linear-gradient(180deg,#f1f1f1,#ededed);position:relative}
-    .card-media img{width:100%;height:100%;object-fit:cover}
-    .card-badge{position:absolute;left:10px;top:10px}
-    .card-body{padding:12px}
-    .title{font-weight:700}
-
-    .filters{display:flex;gap:8px;flex-wrap:wrap}
-    .chip{border:1px solid #ddd;border-radius:999px;padding:8px 12px;cursor:pointer;font-weight:700;color:#333;background:#fff}
-    .chip.active{border-color:#111;background:#111;color:#fff}
-
-    footer{background:#111;color:#bbb;padding:28px 0;margin-top:36px}
-    footer a{color:#ddd}
-    .cols{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:16px}
-    .newsletter{display:flex;gap:10px}
-    .newsletter input{flex:1;border-radius:999px;border:1px solid #444;background:#1a1a1a;color:#fff;padding:12px 14px;outline:none}
-    .floating{position:fixed;right:16px;bottom:16px;display:grid;gap:12px;z-index:60;padding-bottom:env(safe-area-inset-bottom)}
-    .float-btn{width:56px;height:56px;border-radius:16px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#25d366,#2bdc72);color:#fff;font-weight:800;cursor:pointer;box-shadow:0 10px 24px rgba(37,211,102,.28)}
-    .to-top{background:#111}
-
-    .exit-mask{position:fixed;inset:0;background:rgba(0,0,0,.5);display:none;align-items:flex-end;justify-content:center;z-index:100;padding:0}
-    .exit-mask.show{display:flex}
-    .exit-modal{width:100%;max-width:960px;background:#fff;border-radius:16px 16px 0 0;overflow:hidden;box-shadow:var(--shadow);max-height:92vh;display:flex;flex-direction:column}
-    .exit-head{position:sticky;top:0;background:#fff;display:flex;align-items:center;justify-content:space-between;padding:12px 14px;border-bottom:1px solid #eee;z-index:1}
-    .exit-body{padding:14px;overflow:auto}
-    .exit-footer-fixed{position:sticky;bottom:0;background:#fff;border-top:1px solid #eee;padding:10px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
-
-    .detail-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-    @media (max-width:640px){ .detail-grid{grid-template-columns:1fr} }
-
-    .tap{ position:relative; display:block; cursor:pointer; transition:transform .12s ease, filter .12s ease, box-shadow .12s ease; overflow:hidden; border-radius:12px; }
-    .tap:active{ transform: scale(0.985); filter: brightness(0.98); }
-    .tap::after{ content:""; position:absolute; left: var(--ripple-x, 50%); top: var(--ripple-y, 50%); width: 12px; height: 12px; background: radial-gradient(circle, rgba(255,255,255,0.45) 0%, rgba(255,255,255,0.15) 40%, rgba(255,255,255,0) 60%); transform: translate(-50%, -50%) scale(0); opacity:0; pointer-events:none; border-radius:50%; }
-    .tap.is-rippling::after{ animation: ripple-expand 420ms ease-out forwards; }
-    @keyframes ripple-expand{ 0% { transform: translate(-50%, -50%) scale(0); opacity:.5; } 70%{ transform: translate(-50%, -50%) scale(22); opacity:.28; } 100%{ transform: translate(-50%, -50%) scale(36); opacity:0; } }
-
-    @media (max-width:1024px){
-      .grid.products{grid-template-columns:repeat(3,minmax(0,1fr))}
-      .cols{grid-template-columns:1fr 1fr}
-      .hero-wrap{grid-template-columns:1fr;gap:18px;padding:36px 0}
-      .hero h1{font-size:30px}
-    }
-    @media (max-width:640px){
-      .nav{flex-direction:column;align-items:stretch}
-      .nav .bar{order:2}
-      .nav .brand, .nav .nav-links{order:1;justify-content:space-between;width:100%}
-      .topbar{font-size:11px}
-      .grid.products{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-      .card-body{padding:10px}
-      .btn.small{padding:12px}
-      .floating{right:14px;bottom:14px}
-    }
-    @media (max-width:360px){
-      .grid.products{grid-template-columns:1fr}
-    }
-
-    /* Exit-Intent Promo Modal */
-    .promo-mask{position:fixed;inset:0;background:rgba(0,0,0,.55);display:none;align-items:center;justify-content:center;z-index:200}
-    .promo-mask.show{display:flex}
-    .promo{width:92vw;max-width:520px;background:#fff;border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,.2);overflow:hidden;display:flex;flex-direction:column}
-    .promo-head{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;border-bottom:1px solid #eee}
-    .promo-body{padding:16px}
-    .promo-title{font-size:18px;font-weight:800;margin:0 0 8px}
-    .promo-desc{color:#555;margin:0 0 14px}
-    .promo-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:12px 14px;border-top:1px solid #eee;background:#fafafa}
-  </style>
-
-  <!-- TikTok Pixel -->
-  <script>
-    !function (w, d, t) {
-      w.TiktokAnalyticsObject=t;
-      var ttq=w[t]=w[t]||[];
-      ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"];
-      ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};
-      for(var i=0;i<ttq.methods.length;i++) ttq.setAndDefer(ttq,ttq.methods[i]);
-      ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++) ttq.setAndDefer(e,ttq.methods[n]);return e};
-      ttq.load=function(e,n){
-        var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;
-        ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};
-        n=document.createElement("script");
-        n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;
-        e=document.getElementsByTagName("script")[0];
-        e.parentNode.insertBefore(n,e)
-      };
-      ttq.load('D3N5AURC77U8AFC9QKO0');
-      ttq.page();
-    }(window, document, 'ttq');
-  </script>
-</head>
-<body>
-  <div class="topbar">FREE SHIPPING · 7-DAY RETURNS</div>
-  <header>
-    <div class="container nav">
-      <div class="brand">
-        <div class="brand-logo" aria-hidden="true"></div>
-        <span>AURORA BAGS</span>
-        <nav class="nav-links" aria-label="Main" style="margin-left:auto">
-          <a href="#" onclick="scrollToSection('catalog')">All</a>
-          <a href="#" onclick="scrollToSection('contact')">Contact</a>
-        </nav>
-      </div>
-      <div class="bar">
-        <div style="display:flex;gap:8px;align-items:center;width:100%">
-          <input id="search" class="select" placeholder="Search by brand or model" aria-label="Search">
-          <button class="icon-btn" onclick="openWhatsApp('Hi, I need assistance.', 'header')" aria-label="WhatsApp">
-            Contact <span class="count">WA</span>
-            <span id="wa-current-label" style="margin-left:6px;font-size:11px;color:#999"></span>
-          </button>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <section class="hero">
-    <div class="container hero-wrap">
-      <div>
-        <span class="badge">20 Picks</span>
-        <h1>Everyday Elegance</h1>
-        <p>Perfect for commute, travel and evening looks. Chat on WhatsApp for more shots.</p>
-        <div class="hero-card">
-          <div style="display:flex;gap:10px;flex-wrap:wrap">
-            <button class="btn" style="width:100%;max-width:420px" onclick="scrollToSection('catalog')">Shop now</button>
-          </div>
-          <div class="muted">Free shipping · 7-day returns · Secure checkout</div>
-        </div>
-      </div>
-      <div>
-        <img src="https://res.cloudinary.com/dxatkiuow/image/upload/v1763539431/wechat_2025-10-14_143338_593_xnvlcr.png"
-             alt="Hero bag"
-             referrerpolicy="no-referrer"
-             crossorigin="anonymous"
-             decoding="async"
-             loading="eager"
-             onerror="this.onerror=null;this.src='https://res.cloudinary.com/dklyp8vud/image/upload/v1760526539/IMG_6346_vrvm1h.jpg';">
-      </div>
-    </div>
-  </section>
-
-  <section id="catalog" class="section">
-    <div class="container">
-      <div class="head">
-        <h2>Catalog</h2>
-        <div class="filters">
-          <button class="chip active" data-filter="all" onclick="setFilter('all')">All</button>
-          <button class="chip" data-filter="Hermes" onclick="setFilter('Hermes')">Hermes</button>
-          <button class="chip" data-filter="LV" onclick="setFilter('LV')">LV</button>
-          <button class="chip" data-filter="Chanel" onclick="setFilter('Chanel')">Chanel</button>
-        </div>
-      </div>
-      <div id="grid" class="grid products"></div>
-    </div>
-  </section>
-
-  <footer id="contact">
-    <div class="container cols">
-      <div>
-        <div class="title" style="color:#fff;margin-bottom:8px">AURORA BAGS</div>
-        <div>Curated designer-inspired bags for daily elegance.</div>
-      </div>
-      <div>
-        <div class="title" style="color:#fff;margin-bottom:8px">Shop</div>
-        <a href="#" onclick="scrollToSection('catalog')">All</a><br>
-      </div>
-      <div>
-        <div class="title" style="color:#fff;margin-bottom:8px">Company</div>
-        <a href="#">About</a><br>
-        <a href="#">Craft</a>
-      </div>
-      <div>
-        <div class="title" style="color:#fff;margin-bottom:8px">Newsletter</div>
-        <div class="newsletter">
-          <input id="newsletterEmail" placeholder="Your email">
-          <button id="subscribeBtn" class="btn small dark">Subscribe</button>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <div class="floating">
-    <div class="float-btn" onclick="openWhatsApp('Hi, I would like to ask about a bag.', 'float')">WA</div>
-    <div class="float-btn to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
-  </div>
-
-  <!-- Detail Modal Container -->
-  <div class="exit-mask" id="exit-mask" aria-hidden="true"></div>
-
-  <!-- Exit-Intent Promo Modal -->
-  <div class="promo-mask" id="promo-mask" aria-hidden="true"></div>
-
-  <script>
-    // WhatsApp numbers and timed rotation
-    const NUMBERS = ["8617807741567","447759820876","447349050019"];
-    const PHONE_ROTATE_MS = 5000; // 10s per number
-    let currentNumberIndex = 0;
-    let phoneTimer = null;
-
-    function startPhoneRotation(){
-      stopPhoneRotation();
-      phoneTimer = setInterval(()=>{
-        currentNumberIndex = (currentNumberIndex + 1) % NUMBERS.length;
-        updateWaLabel();
-      }, PHONE_ROTATE_MS);
-    }
-    function stopPhoneRotation(){
-      if (phoneTimer) { clearInterval(phoneTimer); phoneTimer = null; }
-    }
-    function getCurrentPhone(){ return NUMBERS[currentNumberIndex]; }
-    function updateWaLabel(){
-      const el = document.getElementById('wa-current-label');
-      if (!el) return;
-      el.textContent = `→ +${getCurrentPhone()}`;
-    }
-
-    // Products (same as before)
-    const PRODUCTS = [
-      { id: 201, slug: "hermes", name: "Hermes BirKin25 togo leather", tag: "Hermes", img: "https://res.cloudinary.com/dxatkiuow/image/upload/v1763540168/IMG_E5733_w8pujn.jpg",
-        images: ["https://res.cloudinary.com/dxatkiuow/image/upload/v1763540186/IMG_E5724_jqnlwq.jpg","https://res.cloudinary.com/dxatkiuow/image/upload/v1763540188/IMG_E5848_srucrb.jpg"] },
-      { id: 202, slug: "hermes", name: "Hermes BirKin25 togo leather touch crocodile", tag: "Hermes", img: "https://res.cloudinary.com/dxatkiuow/image/upload/v1763540437/wsxc1757868897854_2_csoqkc.jpg",
-        images: ["https://res.cloudinary.com/dxatkiuow/image/upload/v1763540437/wsxc1757868889523_2_blfovq.jpg","https://res.cloudinary.com/dxatkiuow/image/upload/v1763540438/wsxc1757868835375_7_txcird.jpg"] },
-      { id: 203, slug: "hermes", name: "BirKin25 togo leather touch crocodile2", tag: "Hermes", img: "https://res.cloudinary.com/dxatkiuow/image/upload/v1763540572/wsxc1757862926952_8_lyk4tx.jpg",
-        images: ["https://res.cloudinary.com/dxatkiuow/image/upload/v1763540572/wsxc1757862945635_8_clwm2z.jpg","https://res.cloudinary.com/dxatkiuow/image/upload/v1763540572/wsxc1757862896133_2_q14psc.jpg"] },
-      { id: 204, slug: "hermes", name: "Hermes BirKin30 crocodile leather", tag: "Hermes", img: "https://res.cloudinary.com/dxatkiuow/image/upload/v1763541262/wsxc1757863395165_2_wn7drr.jpg",
-        images: ["https://res.cloudinary.com/dxatkiuow/image/upload/v1763541262/wsxc1757863441772_2_omkoiu.jpg","https://res.cloudinary.com/dxatkiuow/image/upload/v1763541262/wsxc1757863458178_2_tr4z9v.jpg"] },
-      { id: 205, slug: "hermes-house", name: "Hermes House during the day", tag: "Hermes", img: "https://res.cloudinary.com/dxatkiuow/image/upload/v1763541505/1_ie0apl.jpg",
-        images: ["https://res.cloudinary.com/dxatkiuow/image/upload/v1763541512/IMG_E4479_mfbchk.jpg","https://res.cloudinary.com/dxatkiuow/image/upload/v1763541512/IMG_E4479_mfbchk.jpg"] },
-
-      { id: 206, slug: "Gray House Rainy Days", name: "Hermes RainyDays", tag: "Hermes", img: "https://res.cloudinary.com/dxatkiuow/image/upload/v1763541505/2_zgiscm.jpg",
-        images: ["https://res.cloudinary.com/dxatkiuow/image/upload/v1763541511/IMG_E4477_byb1je.jpg","https://res.cloudinary.com/dxatkiuow/image/upload/v1763541511/IMG_E4477_byb1je.jpg"] },
-      { id: 207, slug: "Hermes-White HouseSous La Neige", name: "Hermes First Snow", tag: "Hermes", img: "https://res.cloudinary.com/dxatkiuow/image/upload/v1763541507/5_tiedrc.jpg",
-        images: ["https://res.cloudinary.com/dxatkiuow/image/upload/v1763541507/5_tiedrc.jpg","https://res.cloudinary.com/dxatkiuow/image/upload/v1763541512/IMG_E4476_gtmomf.jpg"] },
-      { id: 208, slug: "Hermes-Black HouseMidnight", name: "Hermes Midnight", tag: "Hermes", img: "https://res.cloudinary.com/dxatkiuow/image/upload/v1763541506/4_j6arau.jpg",
-        images: ["https://res.cloudinary.com/dxatkiuow/image/upload/v1763541506/4_j6arau.jpg","https://res.cloudinary.com/dxatkiuow/image/upload/v1763541511/IMG_E4478_e8ug2x.jpg"] },
-      { id: 209, slug: "Hermes-Kelly25 Verona Green", name: "Kelly25 Epson leather", tag: "Hermes", img: "https://res.cloudinary.com/dxatkiuow/image/upload/v1763542183/wsxc1757855453750_0_unzttg.jpg",
-        images: ["https://res.cloudinary.com/dxatkiuow/image/upload/v1763542183/wsxc1757855460811_0_dnk63k.jpg","https://res.cloudinary.com/dxatkiuow/image/upload/v1763542183/wsxc1757855453750_0_unzttg.jpg"] },
-      { id: 210, slug: "Hermes-Kelly25 Milkshake White", name: "Kelly25 Epson leather", tag: "Hermes", img: "https://res.cloudinary.com/dxatkiuow/image/upload/v1763542184/wsxc1757855075179_0_zpwsfj.jpg",
-        images: ["https://res.cloudinary.com/dxatkiuow/image/upload/v1763542185/wsxc1757855079455_0_fasrsk.jpg","https://res.cloudinary.com/dxatkiuow/image/upload/v1763542184/wsxc1757855075179_0_zpwsfj.jpg"] },
-
-      { id: 211, slug: "Hermès Kelly 25 Heart Red", name: "Kelly25 Epson leathe", tag: "Hermes", img: "https://res.cloudinary.com/dxatkiuow/image/upload/v1763542184/wsxc1757855597695_2_r6ihjz.jpg",
-        images: ["https://res.cloudinary.com/dxatkiuow/image/upload/v1763542185/wsxc1757855593175_2_qeooyr.jpg","https://res.cloudinary.com/dxatkiuow/image/upload/v1763542184/wsxc1757855597695_2_r6ihjz.jpg"] },
-      { id: 212, slug: "Hermès Kelly 25 Elephant Grey", name: "Kelly25 Epson leathe", tag: "Hermes", img: "https://res.cloudinary.com/dxatkiuow/image/upload/v1763542185/wsxc1757855195639_0_lejtan.jpg",
-        images: ["https://res.cloudinary.com/dxatkiuow/image/upload/v1763542185/wsxc1757855195639_0_lejtan.jpg","https://res.cloudinary.com/dxatkiuow/image/upload/v1763542185/wsxc1757855182086_0_eoesgg.jpg"] },
-      { id: 213, slug: "chanel-mini", name: "Chanel Evening Mini", tag: "Chanel", img: "https://res.cloudinary.com/dxatkiuow/image/upload/v1763543768/img_8dfae854_20250317_i1742197798217_7875_0_0.jpg_sqrev7.jpg",
-        images: ["https://res.cloudinary.com/dxatkiuow/image/upload/v1763543768/img_8dfae854_20250317_i1742197800597_5745_0_7.jpg_pcusku.jpg","https://res.cloudinary.com/dxatkiuow/image/upload/v1763543768/img_8dfae854_20250317_i1742197798146_7248_0_1.jpg_fwf1sk.jpg"] },
-      { id: 214, slug: "LV Milky Way ", name: "LV Milky Way ", tag: "LV", img: "https://res.cloudinary.com/dxatkiuow/image/upload/v1763544534/img_63752abd_20241222_a1734853242526_8635.jpg_prdaij.jpg",
-        images: ["https://res.cloudinary.com/dxatkiuow/image/upload/v1763544536/img_63752abd_20241222_a1734853242447_3631.jpg_qjxnoj.jpg","https://res.cloudinary.com/dxatkiuow/image/upload/v1763544535/img_63752abd_20241222_a1734853244528_0573.jpg_xiexpg.jpg"] },
-      { id: 215, slug: "LV M44151 Navy Blue", name: "LV M44151 Navy Blue", tag: "LV", img: "https://res.cloudinary.com/dxatkiuow/image/upload/v1763543908/img_778665c2_20250710_a1752102976874_2363.jpg_kimfkj.jpg",
-        images: ["https://res.cloudinary.com/dxatkiuow/image/upload/v1763543909/img_778665c2_20250710_a1752102977707_0562.jpg_vwcvtz.jpg","https://res.cloudinary.com/dxatkiuow/image/upload/v1763543908/img_778665c2_20250710_a1752102978538_6038.jpg_wely0p.jpg"] },
-
-      { id: 216, slug: "LV M57458 VANITY", name: "LV M57458 VANITY", tag: "LV", img: "https://res.cloudinary.com/dxatkiuow/image/upload/v1763544073/img_778665c2_20250710_a1752103039547_6507.jpg_zejjbd.jpg",
-        images: ["https://res.cloudinary.com/dxatkiuow/image/upload/v1763544073/img_778665c2_20250710_a1752103039529_3382.jpg_qmrbbh.jpg","https://res.cloudinary.com/dxatkiuow/image/upload/v1763544074/img_778665c2_20250710_a1752103040539_6043.jpg_snvix0.jpg"] },
-      { id: 217, slug: "lv-M24186twist Nicolas Ghesquière", name: "LV M24186twist Nicolas Ghesquière", tag: "LV", img: "https://res.cloudinary.com/dxatkiuow/image/upload/v1763544204/img_778665c2_20250703_a1751540230627_5042.jpg_ebpits.jpg",
-        images: ["https://res.cloudinary.com/dxatkiuow/image/upload/v1763544205/img_778665c2_20250703_a1751540230361_3554.jpg_nxill9.jpg","https://res.cloudinary.com/dxatkiuow/image/upload/v1763544206/img_778665c2_20250703_a1751540230283_7254.jpg_v5bx8w.jpg"] },
-      { id: 218, slug: "chanel-soir", name: "Chanel Soir Clutch", tag: "Chanel", img: "https://res.cloudinary.com/dxatkiuow/image/upload/v1763544367/i1744238510_7057_0_o3sh1t.jpg",
-        images: ["https://res.cloudinary.com/dxatkiuow/image/upload/v1763544375/20250410_i1744238510_3800_5.jpg_cu14h5.jpg","https://res.cloudinary.com/dxatkiuow/image/upload/v1763544378/20250410_i1744238510_379_1.jpg_rgahlo.jpg"] },
-      { id: 219, slug: "Chanel Classic Model", name: "Chanel Classic Model", tag: "Chanel", img: "https://res.cloudinary.com/dxatkiuow/image/upload/v1763544737/img_d8357bf6_20250411_i1744373736894_5410_0_0.jpg_rvggtu.jpg",
-        images: ["https://res.cloudinary.com/dxatkiuow/image/upload/v1763544792/img_d8357bf6_20250411_i1744373736894_7877_0_2.jpg_mc3bxg.jpg","https://res.cloudinary.com/dxatkiuow/image/upload/v1763544852/img_d8357bf6_20250411_i1744373736894_8170_0_8.jpg_vi984t.jpg"] },
-      { id: 220, slug: "Chanel Classic Model: 1112", name: "Chanel Classic Model: 1112", tag: "Chanel", img: "https://res.cloudinary.com/dxatkiuow/image/upload/v1763544855/20220906_i1662441635_1311_0.jpg_ojabco.jpg",
-        images: ["https://res.cloudinary.com/dxatkiuow/image/upload/v1763544856/20220906_i1662441635_5739_5.jpg_fpvdnn.jpg","https://res.cloudinary.com/dxatkiuow/image/upload/v1763544857/20220906_i1662441635_2717_3.jpg_fezvu5.jpg"] }
-    ];
-
-    const FALLBACKS = [
-      "https://res.cloudinary.com/dklyp8vud/image/upload/v1760435232/IMG_E4456_ejgb1t.jpg",
-      "https://res.cloudinary.com/dklyp8vud/image/upload/v1760447841/IMG_E5724_l4nvjs.jpg",
-      "https://res.cloudinary.com/dklyp8vud/image/upload/v1760526539/IMG_6346_vrvm1h.jpg"
-    ];
-
-    // English UI strings only
-    const T = {
-      whatsapp: "WhatsApp",
-      details: "Details",
-      close: "Close",
-      promoTitle: "Special Offer",
-      promoDesc: "Click to contact and enjoy Black Friday 30% OFF",
-      promoNote: "Limited-time Black Friday. Contact now to see details and stock status.",
-      promoAction: "Chat now",
-      promoClose: "Maybe later"
-    };
-
-    // ripple support
-    document.addEventListener('click', e => { window._lastClickEvent = e; }, true);
-
-    function trackContact(source){
-      if (window.ttq && typeof ttq.track === "function") {
-        ttq.track('Contact', { method: 'WhatsApp', source: source || 'unknown', number: getCurrentPhone() });
-      }
-    }
-
-    function openWhatsApp(message, source){
-      try{
-        const phone = getCurrentPhone();
-        const text = encodeURIComponent(message);
-        const url = `https://wa.me/${phone}?text=${text}`;
-        trackContact(source);
-        window.open(url, "_blank");
-      }catch(err){ console.error(err); }
-    }
-
-    function scrollToSection(id){
-      const el = document.getElementById(id);
-      if (el) el.scrollIntoView({behavior:'smooth', block:'start'});
-    }
-
-    let currentFilter = 'all';
-    let currentQuery = '';
-
-    function setFilter(tag){
-      currentFilter = tag;
-      document.querySelectorAll('.chip').forEach(c => c.classList.toggle('active', c.dataset.filter === tag));
-      render();
-    }
-
-    function getFiltered(){
-      const list = PRODUCTS.filter(p => currentFilter === 'all' ? true : p.tag === currentFilter);
-      if (!currentQuery) return list;
-      const q = currentQuery;
-      return list.filter(p => p.name.toLowerCase().includes(q) || (p.slug||'').toLowerCase().includes(q));
-    }
-
-    function imgAttrs(){
-      return `referrerpolicy="no-referrer" crossorigin="anonymous" decoding="async" loading="lazy"`;
-    }
-
-    function enableClearableSearch(){
-      const el = document.getElementById('search');
-      const wrapper = el.parentElement;
-      const clearBtn = document.createElement('button');
-      clearBtn.textContent = '✕';
-      clearBtn.setAttribute('aria-label','Clear');
-      clearBtn.className = 'icon-btn';
-      clearBtn.style.padding='8px 10px';
-      clearBtn.onclick = () => { el.value=''; currentQuery=''; render(); };
-      wrapper.appendChild(clearBtn);
-    }
-
-    function cardTemplate(p, index, from){
-      const tag = `[${p.slug || 'no-slug'} | #${p.id}]`;
-      const msg = `Hi, I'm interested in: ${p.name} ${tag}`;
-      const onImgClick = `
-        (function(el){
-          try{
-            var r = el.getBoundingClientRect();
-            var e = window._lastClickEvent;
-            if(e){
-              el.style.setProperty('--ripple-x', (e.clientX - r.left) + 'px');
-              el.style.setProperty('--ripple-y', (e.clientY - r.top) + 'px');
+        /* 头像统一对齐 */
+        .avatar-img {
+            width: 48px !important;
+            height: 48px !important;
+            min-width: 48px;
+            min-height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            flex-shrink: 0;
+        }
+        /* 故事图片统一填充 */
+        .story-img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+        }
+        /* 手机端优化 */
+        @media (max-width: 768px) {
+            .story-img-container {
+                min-height: 260px !important;
             }
-            el.classList.remove('is-rippling'); void el.offsetWidth; el.classList.add('is-rippling');
-          }catch(err){}
-          openWhatsApp('${msg.replace(/'/g, "\\'")}', '${from}-image');
-        })(this)
-      `;
-      return `
-        <div class="card">
-          <div class="card-media">
-            <a class="tap" onclick="${onImgClick}">
-              <img src="${p.img}"
-                   alt="${(p.name || 'Product').replace(/"/g,'&quot;')}"
-                   ${imgAttrs()}
-                   onerror="this.onerror=null;this.src='${FALLBACKS[index % FALLBACKS.length]}';">
-            </a>
-            <div class="card-badge"><span class="badge">${p.tag}</span></div>
-          </div>
-          <div class="card-body">
-            <div class="title" style="font-size:15px;line-height:1.3">${p.name}</div>
-            <div class="muted" style="font-size:12px;margin:4px 0 10px">${tag}</div>
-            <div class="mobile-actions" style="display:grid;grid-template-columns:1fr;gap:8px">
-              <button class="btn small" style="width:100%" onclick="openWhatsApp('${msg.replace(/'/g, "\\'")}', '${from}-button')">${T.whatsapp}</button>
-              <button class="btn small ghost" style="width:100%" onclick="viewDetail(${p.id})">${T.details}</button>
+            .story-title {
+                font-size: 1.5rem !important;
+                line-height: 1.3 !important;
+            }
+            .hero-title {
+                font-size: 1.75rem !important;
+            }
+            .hero-sub {
+                font-size: 1rem !important;
+            }
+            .story-body {
+                font-size: 0.875rem !important;
+                line-height: 1.6 !important;
+            }
+            .section-title {
+                font-size: 1.75rem !important;
+            }
+        }
+    </style>
+<base target="_blank">
+<base target="_blank">
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <!-- Top Bar -->
+    <div class="bg-slate-900 text-white py-2 px-4 text-center text-xs tracking-wide">
+        <span class="text-gold font-semibold">🇬🇧 UK-Based</span> — A private community of men reclaiming their confidence and intimacy
+    </div>
+
+    <!-- Nav -->
+    <nav class="bg-white/95 backdrop-blur-md border-b border-slate-200 sticky top-0 z-40">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <div class="w-10 h-10 bg-gradient-to-br from-slate-800 to-slate-900 rounded-lg flex items-center justify-center">
+                    <span class="text-gold font-bold text-xl">A</span>
+                </div>
+                <div>
+                    <h1 class="font-bold text-xl tracking-tight text-slate-900">ANDERSON<span class="text-gold">LAB</span></h1>
+                    <p class="text-[10px] text-slate-500 tracking-[0.2em] uppercase">Men's Intimate Health</p>
+                </div>
             </div>
-          </div>
+            <div class="hidden md:flex gap-8 text-sm font-medium text-slate-600">
+                <a href="#stories" class="hover:text-gold transition">Stories</a>
+                <a href="#community" class="hover:text-gold transition">Community</a>
+                <a href="#guide" class="hover:text-gold transition">Free Guide</a>
+            </div>
+            <!-- Nav: FB button -->
+            <div class="flex items-center gap-2">
+                
+                <a href="https://www.facebook.com/profile.php?id=61551212804930"
+                   target="_blank"
+                   class="bg-[#1877F2] text-white px-5 py-2.5 rounded-full font-bold hover:bg-[#166fe5] transition text-sm flex items-center gap-2 shadow-md shadow-blue-500/20">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    <span class="hidden md:inline">Join Community</span>
+                </a>
+            </div>
         </div>
-      `;
-    }
+    </nav>
 
-    function render(){
-      const data = getFiltered();
-      document.getElementById('grid').innerHTML = data.map((p,i)=>cardTemplate(p,i,'list')).join('');
-    }
-
-    function viewDetail(id){
-      const p = PRODUCTS.find(x=>x.id===id);
-      if(!p) return;
-      const tag = `[${p.slug || 'no-slug'} | #${p.id}]`;
-      const msg = `Hi, I'm interested in: ${p.name} ${tag}`;
-      const imgs = (p.images && p.images.length ? p.images : [p.img]).filter(Boolean);
-
-      const grid = imgs.map((src, i) => `
-        <a class="tap" onclick="(function(el){
-          try{
-            var r = el.getBoundingClientRect(); var e = window._lastClickEvent;
-            if(e){ el.style.setProperty('--ripple-x', (e.clientX - r.left) + 'px'); el.style.setProperty('--ripple-y', (e.clientY - r.top) + 'px');}
-            el.classList.remove('is-rippling'); void el.offsetWidth; el.classList.add('is-rippling');
-          }catch(err){}
-          openWhatsApp('${msg.replace(/'/g, "\\'")}', 'detail-image');
-        })(this)">
-          <img src="${src}"
-               alt="${(p.name || 'Product').replace(/"/g,'&quot;')}"
-               ${imgAttrs()}
-               onerror="this.onerror=null;this.src='${FALLBACKS[i % FALLBACKS.length]}';">
-        </a>
-      `).join('');
-
-      const html = `
-        <div class="exit-modal" role="dialog" aria-modal="true">
-          <div class="exit-head">
-            <div class="title">${p.name}</div>
-            <div style="display:flex;gap:8px;align-items:center">
-              <button class="icon-btn" onclick="hideExit()">✕</button>
-            </div>
-          </div>
-          <div class="exit-body">
-            <div class="muted" style="margin:0 0 10px">${tag}</div>
-            <div class="detail-grid">
-              ${grid}
-            </div>
-          </div>
-          <div class="exit-footer-fixed">
-            <button class="btn" onclick="openWhatsApp('${msg.replace(/'/g, "\\'")}', 'detail-button')">${T.whatsapp}</button>
-            <button class="btn ghost" onclick="hideExit()">${T.close}</button>
-          </div>
+    <!-- Hero Story -->
+    <section class="gradient-hero text-white py-20 md:py-28 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-20 left-10 w-72 h-72 bg-gold rounded-full blur-3xl"></div>
         </div>
-      `;
-      showExit(html);
-      if (window.ttq && typeof ttq.track === "function") {
-        ttq.track('ViewContent', { content_type:'product', content_name:p.name, content_id:p.slug || String(p.id) });
-      }
-    }
-
-    function showExit(inner){
-      const mask = document.getElementById('exit-mask');
-      mask.innerHTML = inner;
-      mask.classList.add('show');
-      mask.setAttribute('aria-hidden','false');
-      mask.onclick = (e)=>{ if(e.target===mask) hideExit(); };
-    }
-    function hideExit(){
-      const mask = document.getElementById('exit-mask');
-      mask.classList.remove('show');
-      mask.setAttribute('aria-hidden','true');
-      mask.innerHTML = '';
-    }
-
-    // Exit-intent promo modal (English only)
-    let promoShown = false;
-    let promoCooldown = false;
-    const PROMO_COOLDOWN_MS = 60 * 1000; // 1 min
-    function promoTemplate(){
-      return `
-        <div class="promo" role="dialog" aria-modal="true" aria-label="${T.promoTitle}">
-          <div class="promo-head">
-            <div class="title" style="font-weight:800">${T.promoTitle}</div>
-            <div style="display:flex;gap:8px;align-items:center">
-              <button class="icon-btn" onclick="hidePromo()">✕</button>
+        <div class="max-w-4xl mx-auto px-4 relative z-10">
+            <div class="text-center mb-8">
+                <span class="text-gold text-sm tracking-widest uppercase font-medium">A True Story</span>
             </div>
-          </div>
-          <div class="promo-body">
-            <div class="promo-title">${T.promoDesc}</div>
-            <div class="promo-desc">${T.promoNote}</div>
-          </div>
-          <div class="promo-actions">
-            <button class="btn" onclick="openWhatsApp('${'Hi, I want to know about Black Friday 30% OFF.'.replace(/'/g, "\\'")}', 'promo')">${T.promoAction}</button>
-            <button class="btn ghost" onclick="hidePromo()">${T.promoClose}</button>
-          </div>
+            <h1 class="serif text-4xl md:text-6xl font-bold leading-tight mb-8 text-center italic hero-title">
+                "The Night I Couldn't Perform — And How I Got Everything Back"
+            </h1>
+            <div class="max-w-2xl mx-auto text-lg text-slate-300 leading-relaxed space-y-6">
+                <p>It was a Tuesday. Nothing special about it — just another quiet evening in Manchester. My wife reached for me in the dark, the way she used to. But this time, something was different.</p>
+                <p>I lay there, and I realised I hadn't felt that kind of desire in months. Not because of stress. Not because things were bad between us. I was 42, supposedly in my prime — and I felt completely numb below the belt. When I tried, my body simply wouldn't respond. The moment was there. And then — nothing.</p>
+                <p>My wife never said a word. But I could see it in her eyes — the confusion, the quiet hurt she was trying to hide. The intimacy we'd once taken for granted had slowly, silently disappeared. And the worst part? I started avoiding any situation that might lead there. Making excuses. Going to bed late. Pretending to be asleep.</p>
+                <p>On the rare occasions we did manage, it was over in minutes. Sometimes less. The embarrassment was crushing. I felt like less of a man. Less of a husband. I stopped looking at myself in the mirror.</p>
+                <p class="text-gold font-semibold text-xl">That morning, I made a decision. I was done accepting this as "just getting old."</p>
+            <div class="text-center my-8">
+                <a href="https://www.facebook.com/profile.php?id=61551212804930"
+                   target="_blank"
+                   class="inline-flex items-center justify-center gap-3 bg-[#1877F2] hover:bg-[#166fe5] text-white px-8 py-4 rounded-full font-bold text-lg transition shadow-xl shadow-blue-500/40 animate-pulse">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    👉 Join 2,000+ Men on Facebook
+                </a>
+                <p class="text-xs text-slate-400 mt-2">Private community. Real stories. No judgment.</p>
+            </div>
+                <p>A friend mentioned Dr. Karen. I was sceptical — I'd tried the usual routes, the GP visits, the awkward conversations that went nowhere. But something about the way he described her was different. "She actually listens," he said. "She doesn't make you feel broken."</p>
+                <p>So I booked the consultation. Honestly, I nearly cancelled it twice. But I showed up.</p>
+                <p>Dr. Karen didn't rush me. She asked questions no doctor had ever thought to ask — not just about the physical symptoms, but about my hormones, my sleep, my stress, my sense of self. Within minutes, I felt less like a patient and more like a person. She explained exactly what was happening in my body, why I'd lost my drive, why I couldn't maintain an erection, and why I was finishing too quickly when I could — and most importantly — that none of it was permanent.</p>
+                <p>The treatment plan she put together was tailored specifically for me. No guesswork. No one-size-fits-all prescription. Just a clear, structured path forward.</p>
+                <p>Within weeks, I noticed the difference. The desire started coming back — quietly at first, then undeniably. My erections returned — firm, reliable, the way they hadn't been in years. And the stamina? I couldn't believe it. What used to end in humiliation now lasted. Properly. Completely.</p>
+                <p>My wife cried. I'm not ashamed to say I did too.</p>
+                <p>That was six years ago. I'm 48 now, and I'll say this without hesitation — the second half of my life has been better than the first. Not just in the bedroom, but in my confidence, my marriage, my sense of being fully alive again.</p>
+                <p>If you're lying awake at night, dreading the moment she reaches for you — wondering if this is just how it is now — it doesn't have to be.</p>
+                <p>Dr. Karen gave me my life back. She can do the same for you.</p>
+            </div>
+            <!-- Hero CTA: FB only -->
+            <div class="text-center mt-12">
+                <p class="text-sm text-slate-400 mb-6">— William, 42 at the time. 48 now. And living proof that it gets better.</p>
+                <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                    
+                    <a href="https://www.facebook.com/profile.php?id=61551212804930"
+                       target="_blank"
+                       class="inline-flex items-center justify-center gap-2 bg-[#1877F2] hover:bg-[#166fe5] text-white px-6 py-3 rounded-full font-semibold text-sm transition">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                        Visit Our Facebook Page
+                    </a>
+                </div>
+            </div>
         </div>
-      `;
-    }
-    function showPromo(){
-      if (promoCooldown) return;
-      const mask = document.getElementById('promo-mask');
-      mask.innerHTML = promoTemplate();
-      mask.classList.add('show');
-      mask.setAttribute('aria-hidden','false');
-      mask.onclick = (e)=>{ if(e.target===mask) hidePromo(); };
-      promoShown = true;
-      promoCooldown = true;
-      setTimeout(()=> promoCooldown = false, PROMO_COOLDOWN_MS);
-    }
-    function hidePromo(){
-      const mask = document.getElementById('promo-mask');
-      mask.classList.remove('show');
-      mask.setAttribute('aria-hidden','true');
-      mask.innerHTML = '';
-    }
-    function setupExitIntent(){
-      // Desktop: mouse leaves to top
-      document.addEventListener('mouseleave', (e)=>{
-        if (e.clientY <= 0 && !promoShown) showPromo();
-      });
-      // Mobile: scroll to top and pause
-      let topTimer;
-      window.addEventListener('scroll', ()=>{
-        clearTimeout(topTimer);
-        topTimer = setTimeout(()=>{
-          if (window.scrollY === 0 && !promoShown) showPromo();
-        }, 300);
-      }, { passive: true });
-    }
+    </section>
 
-    // Search input + TikTok Search event (debounced)
-    const searchEl = document.getElementById('search');
-    let searchDebounce;
-    searchEl.addEventListener('input', (e)=>{
-      currentQuery = (e.target.value || '').trim().toLowerCase();
-      render();
+    <!-- The Turning Point -->
+    <section class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="story-divider mb-8"></div>
+            <h2 class="serif text-3xl md:text-4xl font-bold text-slate-900 mb-8 section-title">The Turning Point</h2>
+            <div class="prose prose-lg text-slate-600 max-w-none space-y-6">
+                <p>William's story isn't unique. It's the story of thousands of men across Britain who wake up one day and realise something fundamental has changed — the desire is gone, the erections are unreliable, and the stamina that once came naturally has vanished. And they've been telling themselves it's normal.</p>
+                <p>What made William different was what he did next. Instead of hiding behind excuses, pretending to be asleep, or accepting another year of quiet distance in his marriage, he took a chance on someone his friend had mentioned: Dr. Karen — a specialist who actually listened, who didn't make him feel broken, who treated him like a person instead of a problem.</p>
+                <blockquote class="border-l-4 border-gold pl-6 py-2 my-8 bg-slate-50 rounded-r-lg">
+                    <p class="serif text-2xl text-slate-800 italic mb-2">"I thought I was broken. Turns out I was just uninformed — and undertreated."</p>
+                    <footer class="text-sm text-slate-500">— William, reflecting on his first consultation with Dr. Karen</footer>
+                </blockquote>
+                <p>Through Dr. Karen's guidance, William discovered that his erectile dysfunction, loss of libido, and premature ejaculation weren't character flaws. They weren't stress. They weren't "in his head." They were biological realities that millions of British men silently struggle with — driven by hormonal imbalance, vascular health, and a nervous system that modern life seems designed to sabotage.</p>
+                <p>But here's the part that matters: <strong>he didn't have to figure it out alone — and neither do you.</strong></p>
+            <div class="text-center mt-8 mb-4">
+                <a href="https://www.facebook.com/profile.php?id=61551212804930"
+                   target="_blank"
+                   class="inline-flex items-center justify-center gap-2 bg-[#1877F2] hover:bg-[#166fe5] text-white px-6 py-3 rounded-full font-bold text-sm transition shadow-lg shadow-blue-500/30">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    Join Our Private Facebook Community
+                </a>
+            </div>
+            </div>
+        </div>
+    </section>
 
-      const q = (e.target.value || '').trim();
-      clearTimeout(searchDebounce);
-      searchDebounce = setTimeout(()=>{
-        if (window.ttq && q.length >= 2) ttq.track('Search', { query: q, content_type: 'product' });
-      }, 350);
-    });
+    <!-- Stories Grid -->
+    <section id="stories" class="py-20 bg-slate-100">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="serif text-3xl md:text-4xl font-bold text-slate-900 mb-4">More Men, More Stories</h2>
+                <p class="text-slate-600 max-w-2xl mx-auto">Every man in our community had a "before." The "after" is still being written — one intimate moment at a time.</p>
+            </div>
 
-    // Newsletter Subscribe event
-    document.getElementById('subscribeBtn').addEventListener('click', ()=>{
-      if (window.ttq && typeof ttq.track === "function") {
-        ttq.track('Subscribe', { method: 'email' });
-      }
-      alert('Subscribed. Thank you!');
-    });
+            <!-- Story 1: David -->
+            <div class="story-card bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-200 mb-8">
+                <div class="grid md:grid-cols-2">
+                    <div class="p-8 md:p-10 flex flex-col justify-center">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center gap-3">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" class="w-12 h-12 rounded-full object-cover avatar-img" alt="David">
+                                <div>
+                                    <div class="font-bold text-slate-900">David's Story</div>
+                                    <div class="text-sm text-slate-500">Birmingham • 38 • Accountant</div>
+                                </div>
+                            </div>
+                            <a href="https://www.facebook.com/profile.php?id=61551212804930"
+                               target="_blank"
+                               class="hidden sm:inline-flex items-center gap-1.5 bg-[#1877F2] hover:bg-[#166fe5] text-white px-3 py-1.5 rounded-full font-medium text-[10px] transition">
+                                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                                Follow
+                            </a>
+                        </div>
+                        <div class="story-divider mb-6"></div>
+                        <h3 class="serif text-2xl font-bold text-slate-900 mb-4 story-title">"It Was Over Before It Started — Every Single Time"</h3>
+                        <div class="space-y-4 text-slate-600 text-sm leading-relaxed story-body">
+                            <p>David's wake-up call came on his wedding anniversary. He'd planned the evening perfectly — dinner, candles, the works. And then, within two minutes, it was over. His wife smiled and said nothing. That silence was worse than anything she could have said.</p>
+                            <p>"I'd been dealing with premature ejaculation for two years. I thought it was just anxiety. I tried everything — breathing techniques, distraction methods, even numbing creams. Nothing worked. I was too embarrassed to tell my GP. Too ashamed to tell my wife the full truth."</p>
+                            <p>A colleague quietly mentioned Dr. Karen. He messaged her that same night, half-expecting to be dismissed. Instead, she responded within the hour — warm, direct, and completely non-judgmental.</p>
+                            <p>"She explained the physiology behind it. The hormonal factors. The nerve sensitivity. For the first time, I understood what was actually happening in my body — and that there were real, proven solutions."</p>
+                            <p class="text-gold font-semibold">"Three months later, my wife asked what had changed. I told her everything. She cried. We both did."</p>
+                        </div>
+                        <div class="mt-6 pt-6 border-t border-slate-100">
+                            <div class="flex flex-wrap gap-3">
+                                
+                                <a href="https://www.facebook.com/profile.php?id=61551212804930"
+                                   target="_blank"
+                                   class="inline-flex items-center gap-2 bg-[#1877F2] hover:bg-[#166fe5] text-white px-4 py-2 rounded-full font-semibold text-xs transition">
+                                    <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                                    Facebook Page
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative bg-slate-200 min-h-[260px] md:min-h-[400px] story-img-container">
+                        <img src="https://res.cloudinary.com/dxatkiuow/image/upload/v1782484506/%E5%8B%83%E8%B5%B7%E6%9B%B4%E7%A1%AC_%E5%8F%98%E5%A4%A7%E4%BA%86_wgxlxd.png" class="story-img" alt="David result">
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-900/90 to-transparent p-6">
+                            <div class="flex gap-6 text-white text-sm">
+                                <div><div class="text-gold font-bold text-lg">8 Weeks</div><div class="text-slate-300 text-xs">To See Results</div></div>
+                                <div><div class="text-gold font-bold text-lg">10x</div><div class="text-slate-300 text-xs">Stamina Increase</div></div>
+                                <div><div class="text-gold font-bold text-lg">Full</div><div class="text-slate-300 text-xs">Confidence Restored</div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-    // Init
-    render();
-    enableClearableSearch();
-    updateWaLabel();
-    startPhoneRotation();
-    setupExitIntent();
-    window.addEventListener('visibilitychange', ()=>{
-      // pause rotation in background to sync user-visible timing
-      if (document.hidden) stopPhoneRotation(); else startPhoneRotation();
-    });
-  </script>
-</body>
-</html>
+            <!-- Story 2: Richard -->
+            <div class="story-card bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-200 mb-8">
+                <div class="grid md:grid-cols-2">
+                    <div class="relative bg-slate-200 min-h-[260px] md:min-h-[400px] story-img-container order-2 md:order-1">
+                        <img src="https://res.cloudinary.com/dxatkiuow/image/upload/v1782484972/60%E5%B2%81%E8%80%81%E5%A4%B4%E4%BD%BF%E7%94%A830%E5%A4%A9%E5%90%8E%E6%AF%94%E5%B9%B4%E8%BD%BB%E4%BA%BA%E5%8E%89%E5%AE%B3_hchjre.jpg" class="story-img" alt="Richard result">
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-900/90 to-transparent p-6">
+                            <div class="flex gap-6 text-white text-sm">
+                                <div><div class="text-gold font-bold text-lg">6 Weeks</div><div class="text-slate-300 text-xs">First Improvement</div></div>
+                                <div><div class="text-gold font-bold text-lg">+180%</div><div class="text-slate-300 text-xs">Libido Restored</div></div>
+                                <div><div class="text-gold font-bold text-lg">Strong</div><div class="text-slate-300 text-xs">Erections Again</div></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-8 md:p-10 flex flex-col justify-center order-1 md:order-2">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center gap-3">
+                                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face" class="w-12 h-12 rounded-full object-cover avatar-img" alt="Richard">
+                                <div>
+                                    <div class="font-bold text-slate-900">Richard's Story</div>
+                                    <div class="text-sm text-slate-500">Leeds • 51 • Former Teacher</div>
+                                </div>
+                            </div>
+                            <a href="https://www.facebook.com/profile.php?id=61551212804930"
+                               target="_blank"
+                               class="hidden sm:inline-flex items-center gap-1.5 bg-[#1877F2] hover:bg-[#166fe5] text-white px-3 py-1.5 rounded-full font-medium text-[10px] transition">
+                                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                                Follow
+                            </a>
+                        </div>
+                        <div class="story-divider mb-6"></div>
+                        <h3 class="serif text-2xl font-bold text-slate-900 mb-4 story-title">"I Lost All Desire. I Thought My Marriage Was Over."</h3>
+                        <div class="space-y-4 text-slate-600 text-sm leading-relaxed story-body">
+                            <p>Richard hadn't initiated intimacy with his wife in over a year. Not because he didn't love her — he adored her. But the desire had simply vanished. He felt nothing. And when she tried to reach him, he'd pull away, ashamed that his body no longer responded the way it once had.</p>
+                            <p>"She started sleeping in the spare room. Not out of anger — out of kindness. She didn't want to make me feel worse. But that distance nearly broke us. I genuinely thought our marriage was dying."</p>
+                            <p>His GP ran a blood panel and told him his testosterone was "within normal range." But Richard knew something was deeply wrong. A friend mentioned Dr. Karen — a specialist who looked beyond standard NHS thresholds and treated the whole picture.</p>
+                            <p>"Within six weeks of her treatment plan, I felt the first flicker of desire I'd had in over a year. By week ten, I was the one reaching for my wife."</p>
+                            <p class="text-gold font-semibold">"She moved back into our bedroom. We haven't looked back since."</p>
+                        </div>
+                        <div class="mt-6 pt-6 border-t border-slate-100">
+                            <div class="flex flex-wrap gap-3">
+                                
+                                <a href="https://www.facebook.com/profile.php?id=61551212804930"
+                                   target="_blank"
+                                   class="inline-flex items-center gap-2 bg-[#1877F2] hover:bg-[#166fe5] text-white px-4 py-2 rounded-full font-semibold text-xs transition">
+                                    <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                                    Facebook Page
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Story 3: Michael -->
+            <div class="story-card bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-200 mb-8">
+                <div class="grid md:grid-cols-2">
+                    <div class="p-8 md:p-10 flex flex-col justify-center">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center gap-3">
+                                <img src="https://res.cloudinary.com/dxatkiuow/image/upload/v1782485436/144548340686_cwsyh3.jpg" class="w-12 h-12 rounded-full object-cover avatar-img" alt="Michael">
+                                <div>
+                                    <div class="font-bold text-slate-900">Michael's Story</div>
+                                    <div class="text-sm text-slate-500">Edinburgh • 55 • Civil Engineer</div>
+                                </div>
+                            </div>
+                            <a href="https://www.facebook.com/profile.php?id=61551212804930"
+                               target="_blank"
+                               class="hidden sm:inline-flex items-center gap-1.5 bg-[#1877F2] hover:bg-[#166fe5] text-white px-3 py-1.5 rounded-full font-medium text-[10px] transition">
+                                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                                Follow
+                            </a>
+                        </div>
+                        <div class="story-divider mb-6"></div>
+                        <h3 class="serif text-2xl font-bold text-slate-900 mb-4 story-title">"My GP Said My Levels Were 'Fine.' I Couldn't Get an Erection."</h3>
+                        <div class="space-y-4 text-slate-600 text-sm leading-relaxed story-body">
+                            <p>Michael had done everything right. He ate well, exercised regularly, didn't drink much. But at 54, he was struggling to achieve and maintain an erection — and when he finally managed, his desire was so low it felt mechanical. His GP shrugged and said everything was "fine for his age."</p>
+                            <p>"Fine for my age? I was failing my wife in the most intimate way a man can. And the medical system was telling me that was acceptable."</p>
+                            <p>He found Dr. Karen through a private men's health forum. Unlike his GP, she didn't just look at whether his numbers fell within a broad "normal" range. She looked at optimal function — the levels at which a man actually thrives, not merely survives.</p>
+                            <p>"She identified three separate factors contributing to my erectile dysfunction. Not one — three. And she had a targeted plan for each one."</p>
+                            <p>At his 12-month review, Michael's function had fully returned. "The desire came back too. Real desire. The kind I thought I'd lost forever."</p>
+                            <p class="text-gold font-semibold">"I'm 55 and performing better than I did at 40. That's not a boast. That's Dr. Karen's work."</p>
+                        </div>
+                        <div class="mt-6 pt-6 border-t border-slate-100">
+                            <div class="flex flex-wrap gap-3">
+                                
+                                <a href="https://www.facebook.com/profile.php?id=61551212804930"
+                                   target="_blank"
+                                   class="inline-flex items-center gap-2 bg-[#1877F2] hover:bg-[#166fe5] text-white px-4 py-2 rounded-full font-semibold text-xs transition">
+                                    <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                                    Facebook Page
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative bg-slate-200 min-h-[260px] md:min-h-[400px] story-img-container">
+                        <img src="https://res.cloudinary.com/dxatkiuow/image/upload/v1782484506/6e4e8f882bc9858af83e8a5ec4cad890_raia18.png" class="story-img" alt="Michael result">
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-900/90 to-transparent p-6">
+                            <div class="flex gap-6 text-white text-sm">
+                                <div><div class="text-gold font-bold text-lg">12 Weeks</div><div class="text-slate-300 text-xs">Full Recovery</div></div>
+                                <div><div class="text-gold font-bold text-lg">100%</div><div class="text-slate-300 text-xs">Erection Quality</div></div>
+                                <div><div class="text-gold font-bold text-lg">Natural</div><div class="text-slate-300 text-xs">Tailored Protocol</div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Story 4: Thomas -->
+            <div class="story-card bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-200">
+                <div class="grid md:grid-cols-2">
+                    <div class="relative bg-slate-200 min-h-[260px] md:min-h-[400px] story-img-container order-2 md:order-1">
+                        <img src="https://res.cloudinary.com/dxatkiuow/image/upload/v1782484507/637e72457e12d534a38701f521dd37c0_xps5ce.png" class="story-img" alt="Thomas result">
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-900/90 to-transparent p-6">
+                            <div class="flex gap-6 text-white text-sm">
+                                <div><div class="text-gold font-bold text-lg">5 Weeks</div><div class="text-slate-300 text-xs">Desire Returned</div></div>
+                                <div><div class="text-gold font-bold text-lg">30+ Min</div><div class="text-slate-300 text-xs">Stamina Achieved</div></div>
+                                <div><div class="text-gold font-bold text-lg">New</div><div class="text-slate-300 text-xs">Relationship Energy</div></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-8 md:p-10 flex flex-col justify-center order-1 md:order-2">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center gap-3">
+                                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&h=100&fit=crop&crop=face" class="w-12 h-12 rounded-full object-cover avatar-img" alt="Thomas">
+                                <div>
+                                    <div class="font-bold text-slate-900">Thomas's Story</div>
+                                    <div class="text-sm text-slate-500">Glasgow • 34 • Software Developer</div>
+                                </div>
+                            </div>
+                            <a href="https://www.facebook.com/profile.php?id=61551212804930"
+                               target="_blank"
+                               class="hidden sm:inline-flex items-center gap-1.5 bg-[#1877F2] hover:bg-[#166fe5] text-white px-3 py-1.5 rounded-full font-medium text-[10px] transition">
+                                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                                Follow
+                            </a>
+                        </div>
+                        <div class="story-divider mb-6"></div>
+                        <h3 class="serif text-2xl font-bold text-slate-900 mb-4 story-title">"I Was 34 With the Sex Drive of a Man Twice My Age"</h3>
+                        <div class="space-y-4 text-slate-600 text-sm leading-relaxed story-body">
+                            <p>Thomas was the youngest person in his team to make senior developer. He was also dealing with something he couldn't tell anyone: at 34, he had almost no sex drive, struggled to maintain an erection under pressure, and when he did manage, it was over embarrassingly fast.</p>
+                            <p>"I thought this was something that happened to men in their fifties. Not me. I was young, relatively fit, no major health issues. But my girlfriend had started making excuses to avoid intimacy, and I knew why. I just couldn't face it."</p>
+                            <p>He found Dr. Karen through a private forum. She ran a comprehensive assessment and identified a hormonal pattern common in high-stress men in their thirties — one that was quietly destroying his sexual function.</p>
+                            <p>"No jargon. No judgment. Just facts, a plan, and the reassurance that this was fixable. Within five weeks, I felt desire again — real, spontaneous desire. By week eight, everything was working. Properly. For as long as I wanted."</p>
+                            <p class="text-gold font-semibold">"My girlfriend doesn't know what changed. She just knows I'm different. Better. Present. And she's not making excuses anymore."</p>
+                        </div>
+                        <div class="mt-6 pt-6 border-t border-slate-100">
+                            <div class="flex flex-wrap gap-3">
+                                
+                                <a href="https://www.facebook.com/profile.php?id=61551212804930"
+                                   target="_blank"
+                                   class="inline-flex items-center gap-2 bg-[#1877F2] hover:bg-[#166fe5] text-white px-4 py-2 rounded-full font-semibold text-xs transition">
+                                    <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                                    Facebook Page
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Common Thread -->
+    <section class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <div class="story-divider mx-auto mb-8"></div>
+            <h2 class="serif text-3xl md:text-4xl font-bold text-slate-900 mb-8 section-title">The Common Thread</h2>
+            <div class="prose prose-lg text-slate-600 max-w-none text-left space-y-6">
+                <p>Every story you've read has something in common. It wasn't a miracle pill. It wasn't a 30-day transformation. It wasn't a celebrity endorsement or a slick marketing campaign.</p>
+                <p>It was <strong>being heard</strong>.</p>
+                <p>These men found something increasingly rare: a specialist who would actually listen — about the things they couldn't say to their wives, their GPs, or their closest mates. A consultation where they felt like a person, not a problem. A treatment plan built for their specific biology — addressing erectile dysfunction, lost libido, and premature ejaculation as the interconnected, treatable conditions they are.</p>
+                <blockquote class="border-l-4 border-gold pl-6 py-2 my-8 bg-slate-50 rounded-r-lg text-center">
+                    <p class="serif text-2xl text-slate-800 italic mb-2">"The most intimate problems require the most careful listening. That's what Dr. Karen does."</p>
+                    <footer class="text-sm text-slate-500">— Something William said that every man in this community understands</footer>
+                </blockquote>
+                <p>Dr. Karen didn't build a supplement company. She built a conversation. The protocols, the guides, the personalised plans — they're all just tools. The real medicine is the moment a man realises he's not broken, not alone, and that it's never too late to feel like himself again.</p>
+            <div class="text-center mt-10">
+                <a href="https://www.facebook.com/profile.php?id=61551212804930"
+                   target="_blank"
+                   class="inline-flex items-center justify-center gap-3 bg-[#1877F2] hover:bg-[#166fe5] text-white px-8 py-4 rounded-full font-bold text-lg transition shadow-xl shadow-blue-500/40">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    👉 Join 2,000+ Men on Facebook
+                </a>
+                <p class="text-sm text-slate-500 mt-3">Free to join. Private group. Real support from real men.</p>
+            </div>
+            </div>
+            <div class="mt-12 grid md:grid-cols-3 gap-6 text-center">
+                <div class="p-6">
+                    <div class="text-4xl mb-3">🔒</div>
+                    <h4 class="font-bold text-slate-900 mb-2">Completely Confidential</h4>
+                    <p class="text-sm text-slate-600">Everything you share with Dr. Karen stays private. No judgement. No records shared without consent.</p>
+                </div>
+                <div class="p-6">
+                    <div class="text-4xl mb-3">🎯</div>
+                    <h4 class="font-bold text-slate-900 mb-2">Personalised Treatment</h4>
+                    <p class="text-sm text-slate-600">No one-size-fits-all. Every plan is built around your specific symptoms, biology, and goals.</p>
+                </div>
+                <div class="p-6">
+                    <div class="text-4xl mb-3">✅</div>
+                    <h4 class="font-bold text-slate-900 mb-2">Proven Results</h4>
+                    <p class="text-sm text-slate-600">Hundreds of British men have restored their erections, desire, and stamina under Dr. Karen's care.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community CTA -->
+    <section id="community" class="py-20 gradient-hero text-white">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="serif text-3xl md:text-4xl font-bold mb-6">Your Recovery Starts with One Message</h2>
+            <p class="text-lg text-slate-300 mb-10 leading-relaxed">
+                You don't need to have everything figured out. You don't need to be "ready." You just need to be honest about where you are right now. Dr. Karen will meet you there — privately, professionally, and without judgement.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
